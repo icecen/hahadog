@@ -16,24 +16,29 @@
             <h1>Hahadog</h1>
         </div>
         <div class="nav-actions">
+            <select id="lang-switcher" class="lang-select">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
             <div id="user-info" class="user-info hidden">
                 <div class="points-badge">
                     <span class="bone-icon">🦴</span>
                     <span id="user-points">0</span> dogs
                 </div>
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=guest" alt="User Avatar" id="user-avatar" class="avatar">
-                <button id="logout-btn" class="btn-secondary">退出</button>
+                <button id="logout-btn" class="btn-secondary" data-i18n="logout_btn">退出</button>
             </div>
-            <button id="login-btn" class="btn-primary">登录 / Login</button>
+            <button id="login-btn" class="btn-primary" data-i18n="login_btn">登录 / Login</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
-            <h2 class="hero-title">分享快乐，传递乐观情绪</h2>
-            <p class="hero-subtitle">专为新加坡的外籍人士打造的华文脱口秀交流空间。发布好笑的视频，赢取 Hahadog 积分！</p>
-            <button id="upload-fab" class="btn-accent bounce-animation">分享幽默视频 📺</button>
+            <h2 class="hero-title" data-i18n="hero_title">分享快乐，传递乐观情绪</h2>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">专为新加坡的外籍人士打造的华文脱口秀交流空间。发布好笑的视频，赢取 Hahadog 积分！</p>
+            <button id="upload-fab" class="btn-accent bounce-animation" data-i18n="upload_fab">分享幽默视频 📺</button>
         </div>
         <!-- Decorative elements -->
         <div class="blob blob-1"></div>
@@ -43,10 +48,10 @@
     <!-- Whiteboard Section -->
     <main class="whiteboard-container">
         <div class="whiteboard-header">
-            <h3>公开白板 - 最新幽默</h3>
+            <h3 data-i18n="whiteboard_header">公开白板 - 最新幽默</h3>
             <div class="filter-tabs">
-                <button class="tab active">最新</button>
-                <button class="tab">最热 (Top Dogs)</button>
+                <button class="tab active" data-i18n="tab_latest">最新</button>
+                <button class="tab" data-i18n="tab_hottest">最热 (Top Dogs)</button>
             </div>
         </div>
         
@@ -59,19 +64,19 @@
     <div id="login-modal" class="modal">
         <div class="modal-content glass-effect popup-animation">
             <button class="close-btn">&times;</button>
-            <h2>欢迎来到 Hahadog</h2>
-            <p>选择登录方式以分享视频和点赞</p>
+            <h2 data-i18n="modal_login_title">欢迎来到 Hahadog</h2>
+            <p data-i18n="modal_login_desc">选择登录方式以分享视频和点赞</p>
             <div class="login-options">
                 <button class="login-btn wechat-btn" onclick="app.login('WeChat')">
                     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8.5,13.5A1.5,1.5 0 0,1 7,12A1.5,1.5 0 0,1 8.5,10.5A1.5,1.5 0 0,1 10,12A1.5,1.5 0 0,1 8.5,13.5M15.5,13.5A1.5,1.5 0 0,1 14,12A1.5,1.5 0 0,1 15.5,10.5A1.5,1.5 0 0,1 17,12A1.5,1.5 0 0,1 15.5,13.5M12,4C6.5,4 2,8 2,13C2,15.8 3.4,18.3 5.7,20L4,23L7.5,21.5C8.9,22.1 10.4,22.5 12,22.5C17.5,22.5 22,18.5 22,13.5C22,8.5 17.5,4 12,4Z"/></svg>
-                    微信登录 (WeChat)
+                    <span data-i18n="wechat_login">微信登录 (WeChat)</span>
                 </button>
                 <button class="login-btn whatsapp-btn" onclick="app.login('WhatsApp')">
                     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M16.75,13.96C16.5,13.83 15.28,13.23 15.05,13.14C14.82,13.05 14.65,13 14.47,13.26C14.3,13.5 13.84,14.07 13.7,14.25C13.56,14.43 13.4,14.45 13.15,14.33C12.9,14.2 12.08,13.93 11.1,13.06C10.34,12.38 9.83,11.53 9.68,11.28C9.53,11.04 9.66,10.92 9.79,10.8C9.9,10.69 10.04,10.5 10.16,10.36C10.29,10.23 10.34,10.13 10.43,9.95C10.53,9.78 10.48,9.63 10.4,9.5C10.33,9.37 9.83,8.12 9.62,7.63C9.42,7.15 9.23,7.21 9.09,7.2C8.96,7.2 8.79,7.2 8.61,7.2C8.44,7.2 8.16,7.26 7.93,7.53C7.7,7.79 7.04,8.4 7.04,9.65C7.04,10.89 7.96,12.08 8.09,12.25C8.23,12.43 9.85,14.93 12.35,16.03C12.95,16.29 13.42,16.44 13.78,16.55C14.38,16.74 14.93,16.71 15.36,16.63C15.84,16.53 16.85,16 17.07,15.42C17.29,14.84 17.29,14.33 17.22,14.23C17.15,14.12 16.97,14.05 16.75,13.96M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C10.35,22 8.8,21.6 7.45,20.9L2,22L3.14,16.67C2.41,15.3 2,13.7 2,12A10,10 0 0,1 12,2Z"/></svg>
-                    WhatsApp 登录
+                    <span data-i18n="whatsapp_login">WhatsApp 登录</span>
                 </button>
             </div>
-            <p class="mock-notice text-sm">*(这是一个模拟登录，点击即可随机生成测试账号)*</p>
+            <p class="mock-notice text-sm" data-i18n="mock_notice">*(这是一个模拟登录，点击即可随机生成测试账号)*</p>
         </div>
     </div>
 
@@ -79,26 +84,26 @@
     <div id="upload-modal" class="modal">
         <div class="modal-content glass-effect popup-animation">
             <button class="close-btn">&times;</button>
-            <h2>分享脱口秀视频</h2>
-            <p>支持 视频号、YouTube、小红书、TikTok。算法会自动检测，超过7分钟将被自动删除！</p>
+            <h2 data-i18n="upload_modal_title">分享脱口秀视频</h2>
+            <p data-i18n="upload_modal_desc">支持 视频号、YouTube、小红书、TikTok。算法会自动检测，超过7分钟将被自动删除！</p>
             <form id="upload-form" class="upload-form">
                 <div class="form-group">
-                    <label for="video-url">视频链接 (URL)</label>
+                    <label for="video-url" data-i18n="url_label">视频链接 (URL)</label>
                     <input type="url" id="video-url" placeholder="https://..." required>
                 </div>
                 <div class="form-group">
-                    <label for="video-title">标题/描述 (一句话概括笑点)</label>
+                    <label for="video-title" data-i18n="title_label">标题/描述 (一句话概括笑点)</label>
                     <input type="text" id="video-title" placeholder="这绝对是我听过最好笑的梗..." required maxlength="50">
                 </div>
                 <!-- This field represents the mock duration that the algorithm would typically extract -->
                 <div class="form-group mock-algorithm-field">
-                    <label for="video-duration">*(模拟算法)* 视频时长 (分钟)</label>
+                    <label for="video-duration" data-i18n="duration_label">*(模拟算法)* 视频时长 (分钟)</label>
                     <input type="number" id="video-duration" placeholder="例如: 5" step="0.1" required>
-                    <small>系统算法验证：大于7分钟将被删除。</small>
+                    <small data-i18n="duration_desc">系统算法验证：大于7分钟将被删除。</small>
                 </div>
                 
                 <div id="upload-status" class="status-message"></div>
-                <button type="submit" class="btn-primary full-width" id="submit-video-btn">算法检测并发布</button>
+                <button type="submit" class="btn-primary full-width" id="submit-video-btn" data-i18n="submit_btn">算法检测并发布</button>
             </form>
         </div>
     </div>

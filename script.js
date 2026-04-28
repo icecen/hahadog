@@ -1,13 +1,96 @@
 // Hahadog App Logic - Simulated Frontend Database using LocalStorage
 
+const translations = {
+    zh: {
+        login_btn: "登录 / Login",
+        logout_btn: "退出",
+        hero_title: "分享快乐，传递乐观情绪",
+        hero_subtitle: "专为新加坡的外籍人士打造的华文脱口秀交流空间。发布好笑的视频，赢取 Hahadog 积分！",
+        upload_fab: "分享幽默视频 📺",
+        upload_fab_login: "登录以分享 📺",
+        whiteboard_header: "公开白板 - 最新幽默",
+        tab_latest: "最新",
+        tab_hottest: "最热 (Top Dogs)",
+        modal_login_title: "欢迎来到 Hahadog",
+        modal_login_desc: "选择登录方式以分享视频和点赞",
+        wechat_login: "微信登录 (WeChat)",
+        whatsapp_login: "WhatsApp 登录",
+        mock_notice: "*(这是一个模拟登录，点击即可随机生成测试账号)*",
+        upload_modal_title: "分享脱口秀视频",
+        upload_modal_desc: "支持 视频号、YouTube、小红书、TikTok。算法会自动检测，超过7分钟将被自动删除！",
+        url_label: "视频链接 (URL)",
+        title_label: "标题/描述 (一句话概括笑点)",
+        duration_label: "*(模拟算法)* 视频时长 (分钟)",
+        duration_desc: "系统算法验证：大于7分钟将被删除。",
+        submit_btn: "算法检测并发布",
+        status_verifying: "正在由算法验证视频...",
+        status_error: "❌ 验证失败：视频超过7分钟，算法已将其自动删除！请分享更简短的幽默。",
+        status_success: "✅ 发布成功！感谢你传递乐观情绪！"
+    },
+    en: {
+        login_btn: "Login",
+        logout_btn: "Logout",
+        hero_title: "Share Happiness, Spread Optimism",
+        hero_subtitle: "A Chinese stand-up comedy sharing space built for foreigners in Singapore. Post funny videos and earn Hahadog points!",
+        upload_fab: "Share Funny Video 📺",
+        upload_fab_login: "Login to Share 📺",
+        whiteboard_header: "Public Whiteboard - Latest Humor",
+        tab_latest: "Latest",
+        tab_hottest: "Hottest (Top Dogs)",
+        modal_login_title: "Welcome to Hahadog",
+        modal_login_desc: "Choose a login method to share and like videos",
+        wechat_login: "Login with WeChat",
+        whatsapp_login: "Login with WhatsApp",
+        mock_notice: "*(This is a mock login, click to generate a random test account)*",
+        upload_modal_title: "Share Stand-up Video",
+        upload_modal_desc: "Supports WeChat Video, YouTube, RED, TikTok. The algorithm will auto-detect, videos over 7 mins will be deleted!",
+        url_label: "Video Link (URL)",
+        title_label: "Title/Description (One sentence punchline)",
+        duration_label: "*(Mock Algorithm)* Video Duration (mins)",
+        duration_desc: "System validation: videos > 7 mins will be deleted.",
+        submit_btn: "Auto-Detect & Publish",
+        status_verifying: "Algorithm is verifying the video...",
+        status_error: "❌ Validation failed: Video > 7 mins, algorithm deleted it automatically! Please share shorter humor.",
+        status_success: "✅ Successfully published! Thanks for spreading optimism!"
+    },
+    es: {
+        login_btn: "Iniciar sesión",
+        logout_btn: "Cerrar sesión",
+        hero_title: "Comparte Felicidad, Difunde Optimismo",
+        hero_subtitle: "Un espacio de comedia en vivo en chino creado para extranjeros en Singapur. ¡Publica videos divertidos y gana puntos Hahadog!",
+        upload_fab: "Compartir Video Divertido 📺",
+        upload_fab_login: "Iniciar sesión para compartir 📺",
+        whiteboard_header: "Pizarra Pública - Último Humor",
+        tab_latest: "Más recientes",
+        tab_hottest: "Más populares (Top Dogs)",
+        modal_login_title: "Bienvenido a Hahadog",
+        modal_login_desc: "Elige un método para compartir y dar me gusta",
+        wechat_login: "Iniciar sesión con WeChat",
+        whatsapp_login: "Iniciar sesión con WhatsApp",
+        mock_notice: "*(Inicio de sesión simulado, haz clic para generar cuenta de prueba)*",
+        upload_modal_title: "Compartir Video de Comedia",
+        upload_modal_desc: "Soporta WeChat Video, YouTube, RED, TikTok. El algoritmo detectará automáticamente, ¡videos de > 7 min serán eliminados!",
+        url_label: "Enlace del Video (URL)",
+        title_label: "Título/Descripción (El remate en una oración)",
+        duration_label: "*(Algoritmo Simulado)* Duración (min)",
+        duration_desc: "Validación del sistema: videos > 7 min serán eliminados.",
+        submit_btn: "Detectar y Publicar",
+        status_verifying: "El algoritmo está verificando el video...",
+        status_error: "❌ Error: Video > 7 min, ¡el algoritmo lo eliminó automáticamente! Por favor comparte humor más corto.",
+        status_success: "✅ ¡Publicado con éxito! ¡Gracias por difundir optimismo!"
+    }
+};
+
 class HahadogApp {
     constructor() {
         this.db = this.initDB();
         this.currentUser = this.db.currentUser ? this.db.users[this.db.currentUser] : null;
+        this.currentLang = 'zh';
         this.initUI();
         this.bindEvents();
         this.renderVideos();
         this.updateUserUI();
+        this.setLanguage(this.currentLang);
     }
 
     initDB() {
@@ -96,6 +179,9 @@ class HahadogApp {
         
         // Grid
         this.videoGrid = document.getElementById('video-grid');
+
+        // Lang Switcher
+        this.langSwitcher = document.getElementById('lang-switcher');
     }
 
     bindEvents() {
@@ -130,6 +216,22 @@ class HahadogApp {
 
         // Upload Form
         this.uploadForm.addEventListener('submit', (e) => this.handleUpload(e));
+
+        // Lang Switcher
+        if (this.langSwitcher) {
+            this.langSwitcher.addEventListener('change', (e) => this.setLanguage(e.target.value));
+        }
+    }
+
+    setLanguage(lang) {
+        this.currentLang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+        this.updateUserUI(); // To update dynamic texts
     }
 
     login(platform) {
@@ -170,11 +272,15 @@ class HahadogApp {
             this.userInfo.classList.remove('hidden');
             this.userPoints.textContent = actualUser.points;
             this.userAvatar.src = actualUser.avatar;
-            this.uploadFab.textContent = '分享幽默视频 📺';
+            if (translations[this.currentLang]) {
+                this.uploadFab.textContent = translations[this.currentLang].upload_fab;
+            }
         } else {
             this.loginBtn.style.display = 'block';
             this.userInfo.classList.add('hidden');
-            this.uploadFab.textContent = '登录以分享 📺';
+            if (translations[this.currentLang]) {
+                this.uploadFab.textContent = translations[this.currentLang].upload_fab_login;
+            }
         }
     }
 
@@ -186,13 +292,13 @@ class HahadogApp {
         const duration = parseFloat(document.getElementById('video-duration').value);
 
         this.statusMsg.className = 'status-message';
-        this.statusMsg.textContent = '正在由算法验证视频...';
+        this.statusMsg.textContent = translations[this.currentLang].status_verifying;
 
         // Simulate API call and algorithm
         setTimeout(() => {
             if (duration > 7) {
                 this.statusMsg.classList.add('error');
-                this.statusMsg.textContent = '❌ 验证失败：视频超过7分钟，算法已将其自动删除！请分享更简短的幽默。';
+                this.statusMsg.textContent = translations[this.currentLang].status_error;
                 this.uploadForm.classList.add('shake');
                 setTimeout(() => this.uploadForm.classList.remove('shake'), 500);
                 return;
@@ -225,7 +331,7 @@ class HahadogApp {
             this.renderVideos();
 
             this.statusMsg.classList.add('success');
-            this.statusMsg.textContent = '✅ 发布成功！感谢你传递乐观情绪！';
+            this.statusMsg.textContent = translations[this.currentLang].status_success;
 
             setTimeout(() => {
                 this.uploadModal.classList.remove('active');
