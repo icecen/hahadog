@@ -95,7 +95,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 2,
+            version: 3,
             users: {},
             currentUser: null,
             videos: [
@@ -137,6 +137,58 @@ class HahadogApp {
                     favs: 150,
                     likedBy: [],
                     favBy: []
+                },
+                {
+                    id: 'v4',
+                    userId: 'mockUser4',
+                    url: 'https://www.youtube.com/watch?v=kYxbgZEh4YI',
+                    thumbnail: 'https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=600&q=80',
+                    title: '艾杰西(白人小哥)脱口秀：美式幽默碰上中国大妈',
+                    platform: 'YouTube',
+                    duration: 5.5,
+                    likes: 420,
+                    favs: 180,
+                    likedBy: [],
+                    favBy: []
+                },
+                {
+                    id: 'v5',
+                    userId: 'mockUser5',
+                    url: 'https://www.tiktok.com/@standup/video/1234567',
+                    thumbnail: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=600&q=80',
+                    title: '玛丽亚(黑人女孩)脱口秀：在广州被叫“靓女”',
+                    platform: 'TikTok',
+                    duration: 3.2,
+                    likes: 890,
+                    favs: 340,
+                    likedBy: [],
+                    favBy: []
+                },
+                {
+                    id: 'v6',
+                    userId: 'mockUser6',
+                    url: 'https://www.xiaohongshu.com/explore/123',
+                    thumbnail: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+                    title: '星悦(白人女孩)脱口秀：中文八级听不懂东北话',
+                    platform: '小红书',
+                    duration: 4.1,
+                    likes: 560,
+                    favs: 210,
+                    likedBy: [],
+                    favBy: []
+                },
+                {
+                    id: 'v7',
+                    userId: 'mockUser7',
+                    url: 'https://channels.weixin.qq.com/video/456',
+                    thumbnail: 'https://images.unsplash.com/photo-1506803682981-6e718a9dd3ee?auto=format&fit=crop&w=600&q=80',
+                    title: '伊布(黑人小哥)脱口秀：当老外学会了菜市场砍价',
+                    platform: '视频号',
+                    duration: 6.0,
+                    likes: 720,
+                    favs: 290,
+                    likedBy: [],
+                    favBy: []
                 }
             ]
         };
@@ -145,11 +197,15 @@ class HahadogApp {
         defaultDB.users['mockUser1'] = { id: 'mockUser1', name: 'User1', points: 128 + 45 * 2 };
         defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 };
         defaultDB.users['mockUser3'] = { id: 'mockUser3', name: 'User3', points: 310 + 150 * 2 };
+        defaultDB.users['mockUser4'] = { id: 'mockUser4', name: 'Jesse_A', points: 420 + 180 * 2 };
+        defaultDB.users['mockUser5'] = { id: 'mockUser5', name: 'Maria_GZ', points: 890 + 340 * 2 };
+        defaultDB.users['mockUser6'] = { id: 'mockUser6', name: 'Lila_Dongbei', points: 560 + 210 * 2 };
+        defaultDB.users['mockUser7'] = { id: 'mockUser7', name: 'Ibu_Boss', points: 720 + 290 * 2 };
 
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 2) {
+            if (!parsedDB.version || parsedDB.version < 3) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
