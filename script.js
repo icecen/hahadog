@@ -95,17 +95,18 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
+            version: 2,
             users: {},
             currentUser: null,
             videos: [
                 {
                     id: 'v1',
                     userId: 'mockUser1',
-                    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Mock
-                    thumbnail: 'https://images.unsplash.com/photo-1585551896839-44ab065963b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', // Standup comedy visual
-                    title: '新加坡生活吐槽：安哥教我讲Singlish',
+                    url: 'https://www.youtube.com/watch?v=o3GYcZZsx2E',
+                    thumbnail: 'https://img.youtube.com/vi/o3GYcZZsx2E/hqdefault.jpg',
+                    title: '呼兰脱口秀：北上广的打工日常',
                     platform: 'YouTube',
-                    duration: 4.5,
+                    duration: 5.2,
                     likes: 128,
                     favs: 45,
                     likedBy: [],
@@ -114,10 +115,10 @@ class HahadogApp {
                 {
                     id: 'v2',
                     userId: 'mockUser2',
-                    url: 'https://www.tiktok.com/@user/video/123',
-                    thumbnail: 'https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                    title: '小红书上的相亲段子，笑不活了！',
-                    platform: '小红书',
+                    url: 'https://www.youtube.com/watch?v=-832gJBu2ac',
+                    thumbnail: 'https://img.youtube.com/vi/-832gJBu2ac/hqdefault.jpg',
+                    title: '徐志胜脱口秀：关于容貌焦虑',
+                    platform: 'YouTube',
                     duration: 6.8,
                     likes: 85,
                     favs: 20,
@@ -127,11 +128,11 @@ class HahadogApp {
                 {
                     id: 'v3',
                     userId: 'mockUser3',
-                    url: 'https://wechat.com/video/123',
-                    thumbnail: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                    title: '职场脱口秀：老板的画饼技术',
-                    platform: '视频号',
-                    duration: 3.2,
+                    url: 'https://www.youtube.com/watch?v=a78vlBPy5A8',
+                    thumbnail: 'https://img.youtube.com/vi/a78vlBPy5A8/hqdefault.jpg',
+                    title: '何广智脱口秀：租房那些事儿',
+                    platform: 'YouTube',
+                    duration: 4.2,
                     likes: 310,
                     favs: 150,
                     likedBy: [],
@@ -147,7 +148,12 @@ class HahadogApp {
 
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
-            return JSON.parse(stored);
+            let parsedDB = JSON.parse(stored);
+            if (!parsedDB.version || parsedDB.version < 2) {
+                this.saveDB(defaultDB);
+                return defaultDB;
+            }
+            return parsedDB;
         } else {
             this.saveDB(defaultDB);
             return defaultDB;
@@ -353,12 +359,37 @@ class HahadogApp {
             const isLiked = this.currentUser && video.likedBy.includes(this.currentUser.id);
             const isFav = this.currentUser && video.favBy.includes(this.currentUser.id);
 
+            let mediaContent = '';
+            if (video.url && (video.url.includes('youtube.com') || video.url.includes('youtu.be'))) {
+                let yId = '';
+                if (video.url.includes('youtu.be/')) {
+                    yId = video.url.split('youtu.be/')[1].split('?')[0];
+                } else if (video.url.includes('v=')) {
+                    yId = video.url.split('v=')[1].split('&')[0];
+                }
+                
+                if (yId) {
+                    mediaContent = `
+                    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px 8px 0 0; background: #000;">
+                        <iframe src="https://www.youtube.com/embed/${yId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                    </div>`;
+                }
+            }
+
+            if (!mediaContent) {
+                // Fallback to original thumbnail approach, but make it clickable
+                mediaContent = `
+                <a href="${video.url}" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="video-thumbnail">
+                        <img src="${video.thumbnail}" alt="Thumbnail">
+                        <div class="play-icon">▶</div>
+                        <div class="duration-badge">${video.duration} min</div>
+                    </div>
+                </a>`;
+            }
+
             card.innerHTML = `
-                <div class="video-thumbnail">
-                    <img src="${video.thumbnail}" alt="Thumbnail">
-                    <div class="play-icon">▶</div>
-                    <div class="duration-badge">${video.duration} min</div>
-                </div>
+                ${mediaContent}
                 <div class="card-content">
                     <h4 class="card-title">${video.title}</h4>
                     <div class="card-meta">
