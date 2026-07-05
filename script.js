@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 12,
+            version: 13,
             users: {},
             currentUser: null,
             videos: [
@@ -105,8 +105,8 @@ class HahadogApp {
                     userId: 'mockUser1',
                     url: 'https://yearntour.net/',
                     thumbnail: 'https://yearntour.net/wp-content/uploads/2025/11/1781929415978.jpeg',
-                    title: '渴望旅游 Yearntour - 探索世界的无限奇妙，发现旅行给生活带来的广阔与美好体验',
-                    platform: '境外旅游',
+                    title: '艺途 Yearntour - 以艺术与工艺赋予美好体验，专注具有美感的饮品器皿',
+                    platform: '生活器皿',
                     duration: 4.8,
                     likes: 128,
                     favs: 45,
@@ -280,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 12) {
+            if (!parsedDB.version || parsedDB.version < 13) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -480,7 +480,7 @@ name = email.split('@')[0];
             }
 
             let platform = '精品咖啡';
-            if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '境外旅游';
+            if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '生活器皿';
             if (url.includes('roaster')) platform = '智能烘焙';
             if (url.includes('green') || url.includes('pac') || url.includes('pack')) platform = '环保包装';
 
