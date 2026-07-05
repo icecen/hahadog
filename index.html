@@ -62,20 +62,78 @@
 
     <!-- Login Modal -->
     <div id="login-modal" class="modal">
-        <div class="modal-content glass-effect popup-animation">
+        <div class="modal-content glass-effect popup-animation" style="max-width: 450px;">
             <button class="close-btn">&times;</button>
             <h2 data-i18n="modal_login_title">欢迎来到 Hahadog</h2>
-            <p data-i18n="modal_login_desc">选择登录方式以分享视频和点赞</p>
-            <div class="login-options">
-                <button class="login-btn wechat-btn" onclick="app.login('WeChat')">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8.5,13.5A1.5,1.5 0 0,1 7,12A1.5,1.5 0 0,1 8.5,10.5A1.5,1.5 0 0,1 10,12A1.5,1.5 0 0,1 8.5,13.5M15.5,13.5A1.5,1.5 0 0,1 14,12A1.5,1.5 0 0,1 15.5,10.5A1.5,1.5 0 0,1 17,12A1.5,1.5 0 0,1 15.5,13.5M12,4C6.5,4 2,8 2,13C2,15.8 3.4,18.3 5.7,20L4,23L7.5,21.5C8.9,22.1 10.4,22.5 12,22.5C17.5,22.5 22,18.5 22,13.5C22,8.5 17.5,4 12,4Z"/></svg>
-                    <span data-i18n="wechat_login">微信登录 (WeChat)</span>
-                </button>
-                <button class="login-btn whatsapp-btn" onclick="app.login('WhatsApp')">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M16.75,13.96C16.5,13.83 15.28,13.23 15.05,13.14C14.82,13.05 14.65,13 14.47,13.26C14.3,13.5 13.84,14.07 13.7,14.25C13.56,14.43 13.4,14.45 13.15,14.33C12.9,14.2 12.08,13.93 11.1,13.06C10.34,12.38 9.83,11.53 9.68,11.28C9.53,11.04 9.66,10.92 9.79,10.8C9.9,10.69 10.04,10.5 10.16,10.36C10.29,10.23 10.34,10.13 10.43,9.95C10.53,9.78 10.48,9.63 10.4,9.5C10.33,9.37 9.83,8.12 9.62,7.63C9.42,7.15 9.23,7.21 9.09,7.2C8.96,7.2 8.79,7.2 8.61,7.2C8.44,7.2 8.16,7.26 7.93,7.53C7.7,7.79 7.04,8.4 7.04,9.65C7.04,10.89 7.96,12.08 8.09,12.25C8.23,12.43 9.85,14.93 12.35,16.03C12.95,16.29 13.42,16.44 13.78,16.55C14.38,16.74 14.93,16.71 15.36,16.63C15.84,16.53 16.85,16 17.07,15.42C17.29,14.84 17.29,14.33 17.22,14.23C17.15,14.12 16.97,14.05 16.75,13.96M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C10.35,22 8.8,21.6 7.45,20.9L2,22L3.14,16.67C2.41,15.3 2,13.7 2,12A10,10 0 0,1 12,2Z"/></svg>
-                    <span data-i18n="whatsapp_login">WhatsApp 登录</span>
-                </button>
+            <p data-i18n="modal_login_desc" style="margin-bottom: 1rem;">选择登录方式以分享优质品牌并点赞</p>
+            
+            <!-- Login Tabs -->
+            <div class="login-tabs" style="display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                <button type="button" class="login-tab-btn active" onclick="app.switchLoginTab('social')" style="flex: 1; padding: 6px; border-radius: 6px; background: rgba(255,255,255,0.05); color: var(--text-color); font-size: 0.85rem;">社交登录</button>
+                <button type="button" class="login-tab-btn" onclick="app.switchLoginTab('phone')" style="flex: 1; padding: 6px; border-radius: 6px; background: transparent; color: var(--text-muted); font-size: 0.85rem;">手机号</button>
+                <button type="button" class="login-tab-btn" onclick="app.switchLoginTab('email')" style="flex: 1; padding: 6px; border-radius: 6px; background: transparent; color: var(--text-muted); font-size: 0.85rem;">电子邮箱</button>
             </div>
+
+            <!-- Tab 1: Social Connect -->
+            <div id="login-tab-social" class="login-tab-content">
+                <div class="login-options">
+                    <button class="login-btn wechat-btn" onclick="app.login('WeChat')" style="background: #07c160;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8.5,13.5A1.5,1.5 0 0,1 7,12A1.5,1.5 0 0,1 8.5,10.5A1.5,1.5 0 0,1 10,12A1.5,1.5 0 0,1 8.5,13.5M15.5,13.5A1.5,1.5 0 0,1 14,12A1.5,1.5 0 0,1 15.5,10.5A1.5,1.5 0 0,1 17,12A1.5,1.5 0 0,1 15.5,13.5M12,4C6.5,4 2,8 2,13C2,15.8 3.4,18.3 5.7,20L4,23L7.5,21.5C8.9,22.1 10.4,22.5 12,22.5C17.5,22.5 22,18.5 22,13.5C22,8.5 17.5,4 12,4Z"/></svg>
+                        <span>微信登录 (WeChat)</span>
+                    </button>
+                    <button class="login-btn whatsapp-btn" onclick="app.login('WhatsApp')" style="background: #25d366;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16.75,13.96C16.5,13.83 15.28,13.23 15.05,13.14C14.82,13.05 14.65,13 14.47,13.26C14.3,13.5 13.84,14.07 13.7,14.25C13.56,14.43 13.4,14.45 13.15,14.33C12.9,14.2 12.08,13.93 11.1,13.06C10.34,12.38 9.83,11.53 9.68,11.28C9.53,11.04 9.66,10.92 9.79,10.8C9.9,10.69 10.04,10.5 10.16,10.36C10.29,10.23 10.34,10.13 10.43,9.95C10.53,9.78 10.48,9.63 10.4,9.5C10.33,9.37 9.83,8.12 9.62,7.63C9.42,7.15 9.23,7.21 9.09,7.2C8.96,7.2 8.79,7.2 8.61,7.2C8.44,7.2 8.16,7.26 7.93,7.53C7.7,7.79 7.04,8.4 7.04,9.65C7.04,10.89 7.96,12.08 8.09,12.25C8.23,12.43 9.85,14.93 12.35,16.03C12.95,16.29 13.42,16.44 13.78,16.55C14.38,16.74 14.93,16.71 15.36,16.63C15.84,16.53 16.85,16 17.07,15.42C17.29,14.84 17.29,14.33 17.22,14.23C17.15,14.12 16.97,14.05 16.75,13.96M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C10.35,22 8.8,21.6 7.45,20.9L2,22L3.14,16.67C2.41,15.3 2,13.7 2,12A10,10 0 0,1 12,2Z"/></svg>
+                        <span>WhatsApp 登录</span>
+                    </button>
+                    <button class="login-btn facebook-btn" onclick="app.login('Facebook')" style="background: #1877f2; border: none;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2c-0.55,0-1,0.45-1,1V12h3v3h-3v6.8C18.56,20.87,22,16.84,22,12z"/></svg>
+                        <span>Facebook 联合登录</span>
+                    </button>
+                    <button class="login-btn x-btn" onclick="app.login('X (Twitter)')" style="background: #111111; border: 1px solid rgba(255,255,255,0.1);">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        <span>使用 X (Twitter) 登录</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab 2: Phone Login -->
+            <div id="login-tab-phone" class="login-tab-content" style="display: none;">
+                <form id="phone-login-form" onsubmit="app.handleFormLogin(event, 'phone')">
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                        <select id="login-phone-country" class="lang-select" style="width: 100px; padding: 10px; font-size: 0.85rem;">
+                            <option value="+65">🇸🇬 +65</option>
+                            <option value="+86">🇨🇳 +86</option>
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+44">🇬🇧 +44</option>
+                            <option value="+61">🇦🇺 +61</option>
+                            <option value="+60">🇲🇾 +60</option>
+                        </select>
+                        <input type="tel" id="login-phone-input" placeholder="请输入手机号码" required style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white;">
+                    </div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                        <input type="text" id="login-phone-code" placeholder="6位验证码" required style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white; font-size: 0.9rem;">
+                        <button type="button" onclick="app.sendMockSMS()" class="btn-primary" style="padding: 10px 14px; border-radius: 8px; font-size: 0.8rem; background: var(--primary-color);">发送验证码</button>
+                    </div>
+                    <button type="submit" class="btn-primary full-width" style="border-radius: 8px;">手机验证并登录</button>
+                </form>
+            </div>
+
+            <!-- Tab 3: Email Login -->
+            <div id="login-tab-email" class="login-tab-content" style="display: none;">
+                <form id="email-login-form" onsubmit="app.handleFormLogin(event, 'email')">
+                    <div style="margin-bottom: 12px;">
+                        <input type="email" id="login-email-input" placeholder="输入您的电子邮箱" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white;">
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="password" id="login-email-pass" placeholder="输入密码" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white;">
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button type="submit" class="btn-primary" style="flex: 1; border-radius: 8px; padding: 10px;">登录</button>
+                        <button type="button" onclick="app.handleEmailRegister()" class="btn-secondary" style="flex: 1; border: 1px solid var(--glass-border); border-radius: 8px; padding: 10px; color: var(--text-color);">注册新账号</button>
+                    </div>
+                </form>
+            </div>
+
             <p class="mock-notice text-sm" data-i18n="mock_notice">*(这是一个模拟登录，点击即可随机生成测试账号)*</p>
         </div>
     </div>
@@ -104,6 +162,37 @@
                 
                 <div id="upload-status" class="status-message"></div>
                 <button type="submit" class="btn-primary full-width" id="submit-video-btn" data-i18n="submit_btn">算法检测并发布</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating AI Chat Assistant -->
+    <div id="ai-chat-widget" class="ai-widget">
+        <button id="ai-chat-btn" class="ai-chat-trigger" title="🐾 Coffee AI Assistant">
+            <span class="ai-btn-icon">🐾</span>
+            <span class="ai-btn-text">Coffee AI</span>
+        </button>
+        <div id="ai-chat-window" class="ai-window glass-effect hidden">
+            <div class="ai-chat-header">
+                <div class="ai-chat-title">
+                    <span class="avatar-icon">🐕</span>
+                    <div>
+                        <h4 style="font-weight:700; color: #fff; margin:0;">Hahadog AI</h4>
+                        <small style="color:var(--primary-color);">在线 / Coffee Specialist</small>
+                    </div>
+                </div>
+                <button id="ai-chat-close" class="close-chat-btn">&times;</button>
+            </div>
+            <div id="ai-chat-messages" class="ai-chat-body">
+                <div class="chat-msg ai">
+                    <div class="msg-bubble">
+                        Bark! Hello! I am your Coffee & Equipment Procurement Assistant. Ask me anything about coffee brewing, grinders, espresso machines, or bean sourcing!
+                    </div>
+                </div>
+            </div>
+            <form id="ai-chat-input-form" class="ai-chat-footer">
+                <input type="text" id="ai-chat-input" placeholder="Ask about coffee or equipment..." required autocomplete="off">
+                <button type="submit" class="ai-chat-send-btn">➔</button>
             </form>
         </div>
     </div>

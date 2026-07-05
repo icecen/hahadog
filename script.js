@@ -75,7 +75,7 @@ const translations = {
         duration_label: "*(Simulado)* Puntaje de Experiencia (1-10)",
         duration_desc: "Límite del sistema: puntajes > 7 serán bloqueados por seguridad.",
         submit_btn: "Detectar y Publicar",
-        status_verifying: "El sistema está verificando la integridad del sitio web...",
+        status_verifying: "El sistema está verificado la integridad del sitio web...",
         status_error: "❌ Error: ¡Puntaje > 7, protección de seguridad activada! Comparta experiencias realistas.",
         status_success: "✅ ¡Publicado con éxito! ¡Gracias por compartir felicidad de marca!"
     }
@@ -91,11 +91,12 @@ class HahadogApp {
         this.renderVideos();
         this.updateUserUI();
         this.setLanguage(this.currentLang);
+        this.initAIChat();
     }
 
     initDB() {
         const defaultDB = {
-            version: 4,
+            version: 5,
             users: {},
             currentUser: null,
             videos: [
@@ -112,7 +113,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'husky',
-                    logoText: 'YT'
+                    logoText: 'YT',
+                    youtubeId: 'o3GYcZZsx2E'
                 },
                 {
                     id: 'v2',
@@ -127,7 +129,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'shiba',
-                    logoText: 'HB'
+                    logoText: 'HB',
+                    youtubeId: '_x-7z7rM7E8'
                 },
                 {
                     id: 'v3',
@@ -142,7 +145,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'corgi',
-                    logoText: 'W'
+                    logoText: 'W',
+                    youtubeId: '_vT9b9x082M'
                 },
                 {
                     id: 'v4',
@@ -157,7 +161,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'golden',
-                    logoText: 'G'
+                    logoText: 'G',
+                    youtubeId: '2Ld4xGvT500'
                 },
                 {
                     id: 'v5',
@@ -172,7 +177,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'poodle',
-                    logoText: 'M'
+                    logoText: 'M',
+                    youtubeId: 'u5_6cWjT124'
                 },
                 {
                     id: 'v6',
@@ -187,7 +193,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'bulldog',
-                    logoText: 'TM'
+                    logoText: 'TM',
+                    youtubeId: 'c0Z18f_gW1M'
                 },
                 {
                     id: 'v7',
@@ -202,7 +209,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'pug',
-                    logoText: 'NI'
+                    logoText: 'NI',
+                    youtubeId: 'gR_nC7-71G8'
                 },
                 {
                     id: 'v8',
@@ -217,7 +225,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'samoyed',
-                    logoText: 'LH'
+                    logoText: 'LH',
+                    youtubeId: 'j3D_W18bL34'
                 },
                 {
                     id: 'v9',
@@ -232,7 +241,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'beagle',
-                    logoText: 'C'
+                    logoText: 'C',
+                    youtubeId: 'm0182T_j21Y'
                 },
                 {
                     id: 'v10',
@@ -247,7 +257,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'dachshund',
-                    logoText: 'S'
+                    logoText: 'S',
+                    youtubeId: 'x1T27c_892k'
                 },
                 {
                     id: 'v11',
@@ -262,7 +273,8 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'collie',
-                    logoText: 'EG'
+                    logoText: 'EG',
+                    youtubeId: 'z49J0-fW910'
                 }
             ]
         };
@@ -279,7 +291,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 4) {
+            if (!parsedDB.version || parsedDB.version < 5) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -295,33 +307,21 @@ class HahadogApp {
     }
 
     initUI() {
-        // Modals
         this.loginModal = document.getElementById('login-modal');
         this.uploadModal = document.getElementById('upload-modal');
-        
-        // Buttons
         this.loginBtn = document.getElementById('login-btn');
         this.logoutBtn = document.getElementById('logout-btn');
         this.uploadFab = document.getElementById('upload-fab');
-        
-        // User Info
         this.userInfo = document.getElementById('user-info');
         this.userPoints = document.getElementById('user-points');
         this.userAvatar = document.getElementById('user-avatar');
-
-        // Forms
         this.uploadForm = document.getElementById('upload-form');
         this.statusMsg = document.getElementById('upload-status');
-        
-        // Grid
         this.videoGrid = document.getElementById('video-grid');
-
-        // Lang Switcher
         this.langSwitcher = document.getElementById('lang-switcher');
     }
 
     bindEvents() {
-        // Modal toggles
         this.loginBtn.addEventListener('click', () => this.loginModal.classList.add('active'));
         this.uploadFab.addEventListener('click', () => {
             if (!this.currentUser) {
@@ -331,7 +331,6 @@ class HahadogApp {
             }
         });
 
-        // Close buttons
         document.querySelectorAll('.close-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.target.closest('.modal').classList.remove('active');
@@ -339,7 +338,6 @@ class HahadogApp {
             });
         });
 
-        // Click outside modal to close
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
                 e.target.classList.remove('active');
@@ -347,13 +345,9 @@ class HahadogApp {
             }
         });
 
-        // Logout
         this.logoutBtn.addEventListener('click', () => this.logout());
-
-        // Upload Form
         this.uploadForm.addEventListener('submit', (e) => this.handleUpload(e));
 
-        // Lang Switcher
         if (this.langSwitcher) {
             this.langSwitcher.addEventListener('change', (e) => this.setLanguage(e.target.value));
         }
@@ -367,18 +361,20 @@ class HahadogApp {
                 el.textContent = translations[lang][key];
             }
         });
-        this.updateUserUI(); // To update dynamic texts
+        this.updateUserUI();
     }
 
     login(platform) {
-        // Mocking authentication
-        const mockNames = ['乐天派阿布', '星村搞笑担当', '哈哈怪', '坡县段子手'];
+        const mockNames = ['海外极客', 'CoffeeLover', '快乐骨头', '咖啡师阿杰'];
         const randomName = mockNames[Math.floor(Math.random() * mockNames.length)];
+        this.performMockLogin(randomName, platform);
+    }
+
+    performMockLogin(username, platform) {
         const userId = 'user_' + Date.now();
-        
         const newUser = {
             id: userId,
-            name: `${randomName} (${platform})`,
+            name: `${username} (${platform})`,
             points: 0,
             avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${userId}`
         };
@@ -401,9 +397,7 @@ class HahadogApp {
 
     updateUserUI() {
         if (this.currentUser) {
-            // Update points dynamically
             const actualUser = this.db.users[this.currentUser.id];
-            
             this.loginBtn.style.display = 'none';
             this.userInfo.classList.remove('hidden');
             this.userPoints.textContent = actualUser.points;
@@ -420,9 +414,64 @@ class HahadogApp {
         }
     }
 
+    switchLoginTab(tabId) {
+        document.querySelectorAll('.login-tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        const eventTarget = window.event ? window.event.currentTarget || window.event.target : null;
+        if (eventTarget) {
+            eventTarget.classList.add('active');
+        }
+
+        document.querySelectorAll('.login-tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        document.getElementById(`login-tab-${tabId}`).style.display = 'block';
+    }
+
+    sendMockSMS() {
+        const phone = document.getElementById('login-phone-input').value;
+        if (!phone) {
+            alert('请先输入手机号码！');
+            return;
+        }
+        alert(`[短信通道] 验证码已成功发送至 ${phone}，模拟验证码为: 123456`);
+        document.getElementById('login-phone-code').value = '123456';
+    }
+
+    handleFormLogin(event, type) {
+        event.preventDefault();
+        let name = '';
+        if (type === 'phone') {
+            const country = document.getElementById('login-phone-country').value;
+            const phone = document.getElementById('login-phone-input').value;
+            const code = document.getElementById('login-phone-code').value;
+            if (code !== '123456') {
+                alert('验证码错误！');
+                return;
+            }
+            name = `${country} ${phone.substring(0, 3)}****`;
+        } else if (type === 'email') {
+            const email = document.getElementById('login-email-input').value;
+            name = email.split('@')[0];
+        }
+        this.performMockLogin(name, type.toUpperCase());
+    }
+
+    handleEmailRegister() {
+        const email = document.getElementById('login-email-input').value;
+        const pass = document.getElementById('login-email-pass').value;
+        if (!email || !pass) {
+            alert('请填入邮箱和密码！');
+            return;
+        }
+        alert('注册成功！正在为您自动登录...');
+        this.performMockLogin(email.split('@')[0], 'EMAIL');
+    }
+
     handleUpload(e) {
         e.preventDefault();
-        
         const url = document.getElementById('video-url').value;
         const title = document.getElementById('video-title').value;
         const duration = parseFloat(document.getElementById('video-duration').value);
@@ -430,7 +479,6 @@ class HahadogApp {
         this.statusMsg.className = 'status-message';
         this.statusMsg.textContent = translations[this.currentLang].status_verifying;
 
-        // Simulate API call and algorithm
         setTimeout(() => {
             if (duration > 7) {
                 this.statusMsg.classList.add('error');
@@ -440,13 +488,11 @@ class HahadogApp {
                 return;
             }
 
-            // Determine Platform
             let platform = '精品咖啡';
             if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '境外旅游';
             if (url.includes('roaster')) platform = '智能烘焙';
             if (url.includes('green') || url.includes('pac') || url.includes('pack')) platform = '环保包装';
 
-            // Add brand website
             const breeds = ['corgi', 'shiba', 'husky', 'golden', 'poodle', 'bulldog', 'pug', 'samoyed', 'beagle', 'dachshund', 'collie'];
             const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
             const logoLetters = title.trim().substring(0, 2).toUpperCase();
@@ -464,7 +510,8 @@ class HahadogApp {
                 favBy: [],
                 breed: randomBreed,
                 logoText: logoLetters,
-                thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80' // Fresh coffee beans photo
+                thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                youtubeId: 'z49J0-fW910' // Default fallback demo video
             };
 
             this.db.videos.unshift(newVideo);
@@ -480,13 +527,11 @@ class HahadogApp {
                 this.statusMsg.textContent = '';
                 this.statusMsg.className = 'status-message';
             }, 1500);
-
-        }, 1500); // 1.5s simulated delay
+        }, 1500);
     }
 
     renderVideos() {
         this.videoGrid.innerHTML = '';
-        
         this.db.videos.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card glass-effect popup-animation';
@@ -495,59 +540,53 @@ class HahadogApp {
             const isFav = this.currentUser && video.favBy.includes(this.currentUser.id);
 
             let mediaContent = '';
-            // If it's a legacy youtube video, render it. Otherwise, render the custom brand showcase link wrapper
-            if (video.url && (video.url.includes('youtube.com') || video.url.includes('youtu.be'))) {
-                let yId = '';
-                if (video.url.includes('youtu.be/')) {
-                    yId = video.url.split('youtu.be/')[1].split('?')[0];
-                } else if (video.url.includes('v=')) {
-                    yId = video.url.split('v=')[1].split('&')[0];
-                }
-                
-                if (yId) {
-                    mediaContent = `
-                    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px 8px 0 0; background: #000;">
-                        <iframe src="https://www.youtube.com/embed/${yId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                    </div>`;
-                }
-            }
-
-            if (!mediaContent) {
-                const badgeLabel = this.currentLang === 'zh' ? '体验' : (this.currentLang === 'es' ? 'Exp' : 'Score');
+            if (video.youtubeId) {
                 mediaContent = `
-                <a href="${video.url}" target="_blank" class="brand-link-wrapper cursor-${video.breed || 'corgi'}">
-                    <div class="video-thumbnail">
-                        <div class="brand-logo-badge">${video.logoText || '🐾'}</div>
-                        <img src="${video.thumbnail}" alt="${video.title}">
-                        <div class="duration-badge">${badgeLabel}: ${video.duration}★</div>
-                    </div>
-                </a>`;
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/${video.youtubeId}?autoplay=0&mute=1" allowfullscreen></iframe>
+                </div>`;
+            } else {
+                mediaContent = `
+                <div class="video-thumbnail">
+                    <img src="${video.thumbnail}" alt="Thumbnail">
+                </div>`;
             }
 
             card.innerHTML = `
-                ${mediaContent}
-                <div class="card-content">
-                    <h4 class="card-title">${video.title}</h4>
+                <div style="position: relative;">
+                    ${mediaContent}
+                    <a href="${video.url}" target="_blank" class="brand-link-wrapper cursor-${video.breed || 'corgi'}">
+                        <div class="brand-logo-badge" style="bottom:-20px; left:16px; top:auto;">${video.logoText || '🐾'}</div>
+                    </a>
+                </div>
+                <div class="card-content" style="padding-top: 25px;">
+                    <a href="${video.url}" target="_blank" class="brand-link-wrapper cursor-${video.breed || 'corgi'}" style="text-decoration:none; color:inherit;">
+                        <h4 class="card-title">${video.title}</h4>
+                    </a>
                     <div class="card-meta">
                         <span class="card-platform">${video.platform}</span>
+                        <span style="font-size:0.8rem; color:var(--primary-color); font-weight:600; margin-left:auto;">
+                            ★ ${video.duration}
+                        </span>
                     </div>
-                    <div class="card-actions">
+                    <a href="${video.url}" target="_blank" class="visit-website-btn cursor-${video.breed || 'corgi'}">
+                        🐾 访问官方网站 / Visit Website ➜
+                    </a>
+                    <div class="card-actions" style="margin-top:12px;">
                         <button class="action-btn like ${isLiked ? 'active' : ''}" data-id="${video.id}">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z"/></svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32(15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z"/></svg>
                             <span>${video.likes}</span>
                         </button>
                         <button class="action-btn fav ${isFav ? 'active' : ''}" data-id="${video.id}">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>
                             <span>${video.favs}</span>
                         </button>
                     </div>
                 </div>
             `;
 
-            // Bind interactions
             const likeBtn = card.querySelector('.like');
             const favBtn = card.querySelector('.fav');
-
             likeBtn.addEventListener('click', () => this.handleInteraction(video.id, 'like'));
             favBtn.addEventListener('click', () => this.handleInteraction(video.id, 'fav'));
 
@@ -580,7 +619,7 @@ class HahadogApp {
             if (index > -1) {
                 video.favBy.splice(index, 1);
                 video.favs--;
-                if(uploader) uploader.points -= 2; // Fav gives more points
+                if(uploader) uploader.points -= 2;
             } else {
                 video.favBy.push(this.currentUser.id);
                 video.favs++;
@@ -590,7 +629,87 @@ class HahadogApp {
 
         this.saveDB();
         this.renderVideos();
-        this.updateUserUI(); // Update UI in case the user liked their own video
+        this.updateUserUI();
+    }
+
+    initAIChat() {
+        this.chatBtn = document.getElementById('ai-chat-btn');
+        this.chatWindow = document.getElementById('ai-chat-window');
+        this.chatClose = document.getElementById('ai-chat-close');
+        this.chatForm = document.getElementById('ai-chat-input-form');
+        this.chatInput = document.getElementById('ai-chat-input');
+        this.chatMessages = document.getElementById('ai-chat-messages');
+
+        this.chatBtn.addEventListener('click', () => {
+            this.chatWindow.classList.toggle('hidden');
+            this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+        });
+
+        this.chatClose.addEventListener('click', () => {
+            this.chatWindow.classList.add('hidden');
+        });
+
+        this.chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = this.chatInput.value.trim();
+            if (!text) return;
+            this.appendChatMessage(text, 'user');
+            this.chatInput.value = '';
+            
+            setTimeout(() => {
+                const reply = this.generateCoffeeAIResponse(text);
+                this.appendChatMessage(reply, 'ai');
+            }, 1000);
+        });
+    }
+
+    appendChatMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-msg ${sender}`;
+        msgDiv.innerHTML = `<div class="msg-bubble">${text.replace(/\n/g, '<br/>')}</div>`;
+        this.chatMessages.appendChild(msgDiv);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+    }
+
+    generateCoffeeAIResponse(query) {
+        const lower = query.toLowerCase();
+        
+        if (lower.includes('格米莱') || lower.includes('gemilai')) {
+            return "格米莱 (Gemilai) 是国内性价比极高的家用与商用半自动意式咖啡机品牌。例如 CRM3605 是入门神机，采用15巴水压与加热块系统；而 CRM3007G 采用旋转泵及 PID 控温，适合小型商业或发烧友。采购建议：家用预算在千元以内选3605，轻商业预算五千元级推荐3007或双锅炉系列！🐕 汪！";
+        }
+        if (lower.includes('惠家') || lower.includes('wpm')) {
+            return "惠家 (WPM) 是中国香港著名的精品咖啡设备制造商。其 KD-310 系列意式咖啡机采用三加热块系统和 PID 控温压力量化，拉花性能非常卓越，其打奶泡缸（拉花缸）更是行业标杆。采购建议：针对海外中高端家用或专业培训工作室，WPM 是极佳的选择！🐕 汪！";
+        }
+        if (lower.includes('泰摩') || lower.includes('timemore')) {
+            return "泰摩 (TIMEMORE) 以美学设计与高性价比磨豆机闻名。其栗子 (Chestnut) 系列手冲手摇磨豆机以及黑镜 (Black Mirror) 智能咖啡秤是手冲爱好者的必备伴侣。采购建议：若您需要手冲磨，栗子 C3 是极佳的入门选择；智能秤首推黑镜 Basic。🐕 汪！";
+        }
+        if (lower.includes('轰炸机') || lower.includes('mhw') || lower.includes('bomber')) {
+            return "轰炸机 (MHW-3BOMBER) 专注于高颜值、高品质的精品咖啡器具（压粉器、拉花缸、滤镜粉碗、手冲壶）。例如他们的闪光恒压粉压，能提供30磅的稳定水平下压反馈，减少通道效应。采购建议：开店批量采购配件可直接联系他们，能显著提升吧台的专业感与视觉档次！🐕 汪！";
+        }
+        if (lower.includes('三豆客') || lower.includes('roaster') || lower.includes('hb')) {
+            return "三豆客 (HB Roaster) 是智能咖啡烘焙机的领军品牌，支持电脑连接及 Artisan 曲线记录，适合咖啡发烧友及烘焙工作室。其热风与半热风直火系统控温极度精准。采购建议：自烘焙入门推荐 HB-M2（200g），商业打样推荐 HB-L3（500g-1kg）。🐕 汪！";
+        }
+        if (lower.includes('生豆') || lower.includes('new idea') || lower.includes('新意念')) {
+            return "新意念咖啡 (New Idea Best) 专注于环球甄选的品质绿咖啡生豆，提供从埃塞俄比亚、哥伦比亚到各大微产区的精品生豆，源头直采且检测严格。采购建议：生豆批量采购支持大宗集装箱与精品工作室拼箱，支持定制样品测试。🐕 汪！";
+        }
+        if (lower.includes('santino') || lower.includes('圣蒂诺')) {
+            return "新加坡圣蒂诺咖啡 (Santino Coffee) 是新加坡及东南亚地区拥有半个世纪底蕴的传统与精品咖啡烘焙商，供应南洋传统咖啡豆（Kopi）、商业意式豆与精品单品豆。采购建议：在新加坡或东南亚开餐饮店，圣蒂诺可提供一站式商业定制烘焙豆及传统咖啡冲煮培训！🐕 汪！";
+        }
+        if (lower.includes('包装') || lower.includes('ecogreenpac') || lower.includes('eco green')) {
+            return "Eco Green Pac 提供绿色环保、可降解的咖啡包装袋，包装定制防潮阻氧。采购建议：精品咖啡烘焙商采购包装袋推荐选配单向排气阀以保证新鲜度，起订量低且支持海外环保标准认证。🐕 汪！";
+        }
+        
+        if (lower.includes('选购') || lower.includes('采购') || lower.includes('买什么') || lower.includes('推荐') || lower.includes('怎么挑')) {
+            return "设备选购采购指南：\n1. **家用入门**：格米莱咖啡机 + 泰摩手摇磨（预算 1000-2000元）。\n2. **精品工作室/高阶家用**：惠家 WPM 咖啡机 + 泰摩智能磨（预算 8000-15000元）。\n3. **自烘焙玩家**：三豆客烘焙机 + 新意念绿咖啡生豆。\n4. **器具配件**：全套选用轰炸机（MHW-3BOMBER）以保证操作一致性。\n您可以告诉我您的预算和具体用途（家用、工作室或商用开店），我将为您量身定制采购清单！🐕 汪！";
+        }
+        if (lower.includes('手冲') || lower.includes('drip') || lower.includes('filter')) {
+            return "手冲咖啡黄金法则：\n1. **粉水比**：推荐 1:15（例如15g咖啡粉，冲煮225g水）。\n2. **研磨度**：中等粗细（类似细砂糖大小），可选用泰摩 Chestnut 磨豆机。\n3. **水温**：浅烘焙推荐 90-93℃，深烘焙推荐 85-88℃。\n4. **时间**：控制在 2分30秒 左右，首推黑镜秤记录注水曲线。🐕 汪！";
+        }
+        if (lower.includes('拉花') || lower.includes('latte art')) {
+            return "拉花秘诀：\n1. **奶泡**：使用 WPM 蒸汽机或意式机，打发出细腻如镜面的微奶泡（Microfoam），温度控制在 60-65℃。\n2. **融合**：从较高处画圈注入融合，直至杯子半满。\n3. **贴面起花**：拉花缸嘴贴近咖啡表面，加速摆动倾斜，最后抬高收尾。强烈推荐选用 WPM 的斜口尖嘴拉花缸！🐕 汪！";
+        }
+        
+        return "Bark! 您好，我是 Hahadog 咖啡设备AI助理。我可以解答有关格米莱、惠家、泰摩、轰炸机等咖啡设备，三豆客烘焙机，以及生豆采购、店面选购预算等所有问题。随时问我吧！🐕";
     }
 }
 
