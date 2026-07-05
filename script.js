@@ -2,12 +2,12 @@
 
 const translations = {
     zh: {
-        login_btn: "登录 / Login",
+        login_btn: "登录以分享 / Login to Share",
         logout_btn: "退出",
         hero_title: "从咖啡开始的生活",
         hero_subtitle: "点赞您喜爱的品牌视频，赢取 Hahadog 治理积分！",
         upload_fab: "分享美好品牌 ☕",
-        upload_fab_login: "登录以分享 ☕",
+        upload_fab_login: "COFFEE AI",
         whiteboard_header: "品牌体验墙 - 发现美好",
         tab_latest: "最新推荐",
         tab_hottest: "热门品牌 (Top Dogs)",
@@ -28,12 +28,12 @@ const translations = {
         status_success: "✅ 发布成功！感谢您分享美好品牌体验！"
     },
     en: {
-        login_btn: "Login",
+        login_btn: "Login to Share",
         logout_btn: "Logout",
         hero_title: "Discover Great Brands, Enhance Life",
         hero_subtitle: "Share the beautiful experiences that premium brands bring to daily life. Post your favorite brand websites and earn Hahadog points!",
         upload_fab: "Share Great Brand ☕",
-        upload_fab_login: "Login to Share ☕",
+        upload_fab_login: "COFFEE AI",
         whiteboard_header: "Brand Experience Wall - Find Beauty",
         tab_latest: "Latest Brands",
         tab_hottest: "Hottest (Top Dogs)",
@@ -54,12 +54,12 @@ const translations = {
         status_success: "✅ Successfully published! Thank you for sharing brand happiness!"
     },
     es: {
-        login_btn: "Iniciar sesión",
+        login_btn: "Iniciar sesión para compartir",
         logout_btn: "Cerrar sesión",
         hero_title: "Descubre Buenas Marcas, Mejora la Vida",
-        hero_subtitle: "Comparte las hermosas experiencias que las marcas premium traen a la vida diaria. ¡Publica tus marcas favoritas y gana puntos Hahadog!",
+        hero_subtitle: "Comparte las hermosas experiences que las marcas premium traen a la vida diaria. ¡Publica tus marcas favoritas y gana puntos Hahadog!",
         upload_fab: "Compartir Marca ☕",
-        upload_fab_login: "Iniciar sesión para compartir ☕",
+        upload_fab_login: "COFFEE AI",
         whiteboard_header: "Muro de Experiencias - Encuentra la Belleza",
         tab_latest: "Más recientes",
         tab_hottest: "Más populares (Top Dogs)",
@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 9,
+            version: 10,
             users: {},
             currentUser: null,
             videos: [
@@ -280,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 9) {
+            if (!parsedDB.version || parsedDB.version < 10) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -314,7 +314,9 @@ class HahadogApp {
         this.loginBtn.addEventListener('click', () => this.loginModal.classList.add('active'));
         this.uploadFab.addEventListener('click', () => {
             if (!this.currentUser) {
-                this.loginModal.classList.add('active');
+                this.chatWindow.classList.remove('hidden');
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+                this.chatInput.focus();
             } else {
                 this.uploadModal.classList.add('active');
             }
