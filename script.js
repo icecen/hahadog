@@ -5,7 +5,7 @@ const translations = {
         login_btn: "登录以分享 / Login to Share",
         logout_btn: "退出",
         hero_title: "从咖啡开始的生活",
-        hero_subtitle: "点赞您喜爱的品牌视频，赢取 Hahadog 治理积分！",
+        hero_subtitle: "新加坡-中国咖啡行业品牌中心",
         upload_fab: "分享美好品牌 ☕",
         upload_fab_login: "COFFEE AI",
         whiteboard_header: "品牌体验墙 - 发现美好",
@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 13,
+            version: 14,
             users: {},
             currentUser: null,
             videos: [
@@ -280,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 13) {
+            if (!parsedDB.version || parsedDB.version < 14) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
