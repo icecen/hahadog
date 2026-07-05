@@ -4,11 +4,11 @@ const translations = {
     zh: {
         login_btn: "登录 / Login",
         logout_btn: "退出",
-        hero_title: "体验、分享、创造",
-        hero_subtitle: "分享每个品牌故事",
-        upload_fab: "分享美好体验 ☕",
+        hero_title: "从咖啡开始的生活",
+        hero_subtitle: "点赞您喜爱的品牌视频，赢取 Hahadog 治理积分！",
+        upload_fab: "分享美好品牌 ☕",
         upload_fab_login: "登录以分享 ☕",
-        whiteboard_header: "品牌体验墙 - 分享美好",
+        whiteboard_header: "品牌体验墙 - 发现美好",
         tab_latest: "最新推荐",
         tab_hottest: "热门品牌 (Top Dogs)",
         modal_login_title: "欢迎来到 Hahadog",
@@ -16,7 +16,7 @@ const translations = {
         wechat_login: "微信登录 (WeChat)",
         whatsapp_login: "WhatsApp 登录",
         mock_notice: "*(这是一个模拟登录，点击即可随机生成测试账号)*",
-        upload_modal_title: "分享美好品牌网站",
+        upload_modal_title: "分享美好咖啡",
         upload_modal_desc: "输入您推荐的品牌官网和体验介绍。系统会自动检测信息，如果推荐权重分数大于7分将引发审核保护！",
         url_label: "品牌官网链接 (URL)",
         title_label: "品牌理念/特色 (介绍它如何让生活更美好)",
@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 7,
+            version: 9,
             users: {},
             currentUser: null,
             videos: [
@@ -105,8 +105,8 @@ class HahadogApp {
                     userId: 'mockUser1',
                     url: 'https://yearntour.net/',
                     thumbnail: 'https://yearntour.net/wp-content/uploads/2025/11/1781929415978.jpeg',
-                    title: '艺途 Yearntour - 专注艺术设计与精湛工艺的器皿',
-                    platform: '专业与生活',
+                    title: '渴望旅游 Yearntour - 探索世界的无限奇妙，发现旅行给生活带来的广阔与美好体验',
+                    platform: '境外旅游',
                     duration: 4.8,
                     likes: 128,
                     favs: 45,
@@ -120,7 +120,7 @@ class HahadogApp {
                     userId: 'mockUser2',
                     url: 'https://www.hbroaster.com/',
                     thumbnail: 'https://enhbroastercom.zb31.com/FileUpLoad/PictureInfosFile/638968941948439302_1.jpg',
-                    title: '爱趣焙 HB Roaster - 用科技精细化控温烘焙每一颗豆，让满室的咖啡香气治愈平凡的一天',
+                    title: '三豆客 HB Roaster - 用科技精细化控温烘焙每一颗豆，让满室的咖啡香气治愈平凡的一天',
                     platform: '智能烘焙',
                     duration: 5.2,
                     likes: 85,
@@ -136,7 +136,7 @@ class HahadogApp {
                     url: 'https://www.wpmcoffee.com/zh',
                     thumbnail: 'https://www.wpmcoffee.com/cdn/shop/files/PRIMUS_b7be2cb4-a5a4-4229-bb01-6494da1a04ff.webp?v=1776666315&width=1500',
                     title: '惠家 WPM - 匠心打造的半自动意式咖啡机与拉花神缸，让咖啡拉花成为温暖生活的艺术仪式',
-                    platform: '精品咖啡设备',
+                    platform: '精品设备',
                     duration: 6.1,
                     likes: 310,
                     favs: 150,
@@ -151,7 +151,7 @@ class HahadogApp {
                     url: 'https://www.gemilai.com.hk/',
                     thumbnail: 'https://www.gemilai.com.hk/img/ina_img.jpg',
                     title: '格米莱 Gemilai - 专业级家用与商用咖啡机，用晨间的第一杯浓郁Espresso为您注入满满幸福感',
-                    platform: '美学智能咖啡设备',
+                    platform: '意式器械',
                     duration: 3.9,
                     likes: 420,
                     favs: 180,
@@ -195,8 +195,8 @@ class HahadogApp {
                     userId: 'mockUser7',
                     url: 'https://www.newideabest.com/about/',
                     thumbnail: 'https://www.newideabest.com/wordpress/wp-content/uploads/2022/11/about_zy.jpg',
-                    title: '中益包装  - Frank Wang创立于2008年，生产符合ESG (环境、社会、治理)倡议的食品包装机',
-                    platform: '包装设备',
+                    title: '新意念 New Idea - 环球甄选的品质绿咖啡生豆，通过精细化源头把控传递大自然最真实的产地芬芳',
+                    platform: '精品生豆',
                     duration: 6.3,
                     likes: 720,
                     favs: 290,
@@ -210,8 +210,8 @@ class HahadogApp {
                     userId: 'mockUser1',
                     url: 'https://www.lhcoffeetime.com/',
                     thumbnail: 'https://www.lhcoffeetime.com/uploadfiles/60.247.152.80/webid475/banner/202506/683fefae14f44.jpg',
-                    title: '领航智造咖啡 LH Coffee Time - 充满温馨与舒适感的咖啡空间，用香醇咖啡连接都市人群之间的欢笑与温情',
-                    platform: '智能咖啡设备',
+                    title: '联合咖啡 LH Coffee Time - 充满温馨与舒适感的咖啡空间，用香醇咖啡连接都市人群之间的欢笑与温情',
+                    platform: '咖啡时间',
                     duration: 5.0,
                     likes: 198,
                     favs: 76,
@@ -225,23 +225,23 @@ class HahadogApp {
                     userId: 'mockUser2',
                     url: 'https://www.caye.com/about',
                     thumbnail: 'https://www.caye.com/upload/images/bannerWork.jpg',
-                    title: '咖爷咖啡 Caye Coffee - 秉承“用科技创造更美好的咖啡时光”的愿景，咖爷科技专注核心技术的底层创新',
-                    platform: '智能咖啡设备',
+                    title: '咖爷科技 Caye - 秉承“用科技创造更美好的咖啡时光”的愿景，咖爷科技专注核心技术的底层创新',
+                    platform: '咖啡科技',
                     duration: 4.2,
                     likes: 110,
                     favs: 38,
                     likedBy: [],
                     favBy: [],
                     breed: 'beagle',
-                    logoText: 'C'
+                    logoText: 'CY'
                 },
                 {
                     id: 'v10',
                     userId: 'mockUser3',
                     url: 'https://santino.com.sg/',
                     thumbnail: 'https://santino.com.sg/cdn/shop/files/This_machine_isn_t_for_everyone._It_s_for_people_who_refuse_to_compromise_on_their_coffee_experience._3.png?v=1782890194',
-                    title: '圣蒂诺咖啡 Santino - 新加坡当地高知名度咖啡行业经销商',
-                    platform: '产业经销商',
+                    title: '圣蒂诺咖啡 Santino - 新加坡半个世纪沉淀的本土烘焙，为东南亚餐饮行业带来最地道浓郁的传统滋味',
+                    platform: '经典烘焙',
                     duration: 5.8,
                     likes: 245,
                     favs: 92,
@@ -255,7 +255,7 @@ class HahadogApp {
                     userId: 'mockUser4',
                     url: 'https://ecogreenpac.com/',
                     thumbnail: 'https://ecogreenpac.com/cdn/shop/files/eco_bg_91a16d2b-55d8-46c4-8fb0-e878d0cd7246_1920x1080.jpg?v=1761821109',
-                    title: 'Eco Green Pac - 绿色可降解的环保咖啡店包装，用科技与可持续包装设计守护我们的蓝色地球',
+                    title: 'Eco Green Pac - 绿色可降解的环保咖啡包装，用科技与可持续包装设计守护我们的蓝色地球',
                     platform: '环保包装',
                     duration: 3.5,
                     likes: 167,
@@ -280,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 7) {
+            if (!parsedDB.version || parsedDB.version < 9) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -478,8 +478,8 @@ name = email.split('@')[0];
             }
 
             let platform = '精品咖啡';
-            if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '专业与生活';
-            if (url.includes('roaster')) platform = '智能烘焙设备';
+            if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '境外旅游';
+            if (url.includes('roaster')) platform = '智能烘焙';
             if (url.includes('green') || url.includes('pac') || url.includes('pack')) platform = '环保包装';
 
             const breeds = ['corgi', 'shiba', 'husky', 'golden', 'poodle', 'bulldog', 'pug', 'samoyed', 'beagle', 'dachshund', 'collie'];
@@ -669,16 +669,19 @@ name = email.split('@')[0];
             return "轰炸机 (MHW-3BOMBER) 专注于高颜值、高品质的精品咖啡器具（压粉器、拉花缸、滤镜粉碗、手冲壶）。例如他们的闪光恒压粉压，能提供30磅的稳定水平下压反馈，减少通道效应。采购建议：开店批量采购配件可直接联系他们，能显著提升吧台的专业感与视觉档次！🐕 汪！";
         }
         if (lower.includes('三豆客') || lower.includes('roaster') || lower.includes('hb')) {
-            return "爱趣焙 (HB Roaster) 是智能咖啡烘焙机的领军品牌，支持电脑连接及 Artisan 曲线记录，适合咖啡发烧友及烘焙工作室。其热风与半热风直火系统控温极度精准。采购建议：自烘焙入门推荐 HB-M2（200g），商业打样推荐 HB-L3（500g-1kg）。🐕 汪！";
+            return "三豆客 (HB Roaster) 是智能咖啡烘焙机的领军品牌，支持电脑连接及 Artisan 曲线记录，适合咖啡发烧友及烘焙工作室。其热风与半热风直火系统控温极度精准。采购建议：自烘焙入门推荐 HB-M2（200g），商业打样推荐 HB-L3（500g-1kg）。🐕 汪！";
         }
-        if (lower.includes('包装') || lower.includes('中益') || lower.includes('挂耳包')) {
-            return "中益包装 专注于咖啡专业包装机。🐕 汪！";
+        if (lower.includes('生豆') || lower.includes('new idea') || lower.includes('新意念')) {
+            return "新意念咖啡 (New Idea Best) 专注于环球甄选的品质绿咖啡生豆，提供从埃塞俄比亚、哥伦比亚到各大微产区的精品生豆，源头直采且检测严格。采购建议：生豆批量采购支持大宗集装箱与精品工作室拼箱，支持定制样品测试。🐕 汪！";
         }
         if (lower.includes('santino') || lower.includes('圣蒂诺')) {
             return "新加坡圣蒂诺咖啡 (Santino Coffee) 是新加坡及东南亚地区拥有半个世纪底蕴的传统与精品咖啡烘焙商，供应南洋传统咖啡豆（Kopi）、商业意式豆与精品单品豆。采购建议：在新加坡或东南亚开餐饮店，圣蒂诺可提供一站式商业定制烘焙豆及传统咖啡冲煮培训！🐕 汪！";
         }
         if (lower.includes('包装') || lower.includes('ecogreenpac') || lower.includes('eco green')) {
             return "Eco Green Pac 提供绿色环保、可降解的咖啡包装袋，包装定制防潮阻氧。采购建议：精品咖啡烘焙商采购包装袋推荐选配单向排气阀以保证新鲜度，起订量低且支持海外环保标准认证。🐕 汪！";
+        }
+        if (lower.includes('caye') || lower.includes('咖爷')) {
+            return "咖爷科技 (Caye Technology) 致力于用科技创造更美好的咖啡时光，专注咖啡机核心技术的底层创新，研发出了极具竞争力的专业级咖啡机设备。采购建议：如需了解其最新的咖啡黑科技及商业合作，欢迎直接点击其官方网站访问！🐕 汪！";
         }
         
         if (lower.includes('选购') || lower.includes('采购') || lower.includes('买什么') || lower.includes('推荐') || lower.includes('怎么挑')) {
