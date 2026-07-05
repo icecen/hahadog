@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 10,
+            version: 11,
             users: {},
             currentUser: null,
             videos: [
@@ -120,7 +120,7 @@ class HahadogApp {
                     userId: 'mockUser2',
                     url: 'https://www.hbroaster.com/',
                     thumbnail: 'https://enhbroastercom.zb31.com/FileUpLoad/PictureInfosFile/638968941948439302_1.jpg',
-                    title: '三豆客 HB Roaster - 用科技精细化控温烘焙每一颗豆，让满室的咖啡香气治愈平凡的一天',
+                    title: '爱趣焙 HB Roaster - 兼具审美与工艺的领先品牌',
                     platform: '智能烘焙',
                     duration: 5.2,
                     likes: 85,
@@ -195,15 +195,15 @@ class HahadogApp {
                     userId: 'mockUser7',
                     url: 'https://www.newideabest.com/about/',
                     thumbnail: 'https://www.newideabest.com/wordpress/wp-content/uploads/2022/11/about_zy.jpg',
-                    title: '新意念 New Idea - 环球甄选的品质绿咖啡生豆，通过精细化源头把控传递大自然最真实的产地芬芳',
-                    platform: '精品生豆',
+                    title: '中益包装 New Idea - 专注于生产符合ESG（环境、社会和公司治理）的食品包装设备',
+                    platform: '包装设备',
                     duration: 6.3,
                     likes: 720,
                     favs: 290,
                     likedBy: [],
                     favBy: [],
                     breed: 'pug',
-                    logoText: 'NI'
+                    logoText: 'ZY'
                 },
                 {
                     id: 'v8',
@@ -280,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 10) {
+            if (!parsedDB.version || parsedDB.version < 11) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -670,11 +670,11 @@ name = email.split('@')[0];
         if (lower.includes('轰炸机') || lower.includes('mhw') || lower.includes('bomber')) {
             return "轰炸机 (MHW-3BOMBER) 专注于高颜值、高品质的精品咖啡器具（压粉器、拉花缸、滤镜粉碗、手冲壶）。例如他们的闪光恒压粉压，能提供30磅的稳定水平下压反馈，减少通道效应。采购建议：开店批量采购配件可直接联系他们，能显著提升吧台的专业感与视觉档次！🐕 汪！";
         }
-        if (lower.includes('三豆客') || lower.includes('roaster') || lower.includes('hb')) {
-            return "三豆客 (HB Roaster) 是智能咖啡烘焙机的领军品牌，支持电脑连接及 Artisan 曲线记录，适合咖啡发烧友及烘焙工作室。其热风与半热风直火系统控温极度精准。采购建议：自烘焙入门推荐 HB-M2（200g），商业打样推荐 HB-L3（500g-1kg）。🐕 汪！";
+        if (lower.includes('爱趣焙') || lower.includes('roaster') || lower.includes('hb')) {
+            return "爱趣焙(HB Roaster) 是兼具审美与工艺的领先品牌。🐕 汪！";
         }
-        if (lower.includes('生豆') || lower.includes('new idea') || lower.includes('新意念')) {
-            return "新意念咖啡 (New Idea Best) 专注于环球甄选的品质绿咖啡生豆，提供从埃塞俄比亚、哥伦比亚到各大微产区的精品生豆，源头直采且检测严格。采购建议：生豆批量采购支持大宗集装箱与精品工作室拼箱，支持定制样品测试。🐕 汪！";
+        if (lower.includes('中益') || lower.includes('new idea') || lower.includes('新意念') || lower.includes('包装设备')) {
+            return "中益包装 专注于生产符合ESG（环境、社会和公司治理）的食品包装设备。🐕 汪！";
         }
         if (lower.includes('santino') || lower.includes('圣蒂诺')) {
             return "新加坡圣蒂诺咖啡 (Santino Coffee) 是新加坡及东南亚地区拥有半个世纪底蕴的传统与精品咖啡烘焙商，供应南洋传统咖啡豆（Kopi）、商业意式豆与精品单品豆。采购建议：在新加坡或东南亚开餐饮店，圣蒂诺可提供一站式商业定制烘焙豆及传统咖啡冲煮培训！🐕 汪！";
@@ -687,7 +687,7 @@ name = email.split('@')[0];
         }
         
         if (lower.includes('选购') || lower.includes('采购') || lower.includes('买什么') || lower.includes('推荐') || lower.includes('怎么挑')) {
-            return "设备选购采购指南：\n1. **家用入门**：格米莱咖啡机 + 泰摩手摇磨（预算 1000-2000元）。\n2. **精品工作室/高阶家用**：惠家 WPM 咖啡机 + 泰摩智能磨（预算 8000-15000元）。\n3. **自烘焙玩家**：三豆客烘焙机 + 新意念绿咖啡生豆。\n4. **器具配件**：全套选用轰炸机（MHW-3BOMBER）以保证操作一致性。\n您可以告诉我您的预算和具体用途（家用、工作室或商用开店），我将为您量身定制采购清单！🐕 汪！";
+            return "设备选购采购指南：\n1. **家用入门**：格米莱咖啡机 + 泰摩手摇磨（预算 1000-2000元）。\n2. **精品工作室/高阶家用**：惠家 WPM 咖啡机 + 泰摩智能磨（预算 8000-15000元）。\n3. **包装与烘焙**：爱趣焙烘焙机 + 中益包装食品包装设备。\n4. **器具配件**：全套选用轰炸机（MHW-3BOMBER）以保证操作一致性。\n您可以告诉我您的预算和具体用途（家用、包装、烘焙或商用开店），我将为您量身定制采购清单！🐕 汪！";
         }
         if (lower.includes('手冲') || lower.includes('drip') || lower.includes('filter')) {
             return "手冲咖啡黄金法则：\n1. **粉水比**：推荐 1:15（例如15g咖啡粉，冲煮225g水）。\n2. **研磨度**：中等粗细（类似细砂糖大小），可选用泰摩 Chestnut 磨豆机。\n3. **水温**：浅烘焙推荐 90-93℃，深烘焙推荐 85-88℃。\n4. **时间**：控制在 2分30秒 左右，首推黑镜秤记录注水曲线。🐕 汪！";
@@ -696,7 +696,7 @@ name = email.split('@')[0];
             return "拉花秘诀：\n1. **奶泡**：使用 WPM 蒸汽机或意式机，打发出细腻如镜面的微奶泡（Microfoam），温度控制在 60-65℃。\n2. **融合**：从较高处画圈注入融合，直至杯子半满。\n3. **贴面起花**：拉花缸嘴贴近咖啡表面，加速摆动倾斜，最后抬高收尾。强烈推荐选用 WPM 的斜口尖嘴拉花缸！🐕 汪！";
         }
         
-        return "Bark! 您好，我是 Hahadog 咖啡设备AI助理。我可以解答有关格米莱、惠家、泰摩、轰炸机等咖啡设备，三豆客烘焙机，以及生豆采购、店面选购预算等所有问题。随时问我吧！🐕";
+        return "Bark! 您好，我是 Hahadog 咖啡设备AI助理。我可以解答有关格米莱、惠家、泰摩、轰炸机等咖啡设备，爱趣焙烘焙机，以及中益包装食品包装设备等所有问题。随时问我吧！🐕";
     }
 }
 
