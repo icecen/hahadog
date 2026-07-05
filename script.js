@@ -4,15 +4,15 @@ const translations = {
     zh: {
         login_btn: "登录 / Login",
         logout_btn: "退出",
-        hero_title: "分享每个品牌的心意，传递品质生活的体面",
-        hero_subtitle: "点赞您喜爱的品牌视频，赢取 Hahadog治理积分！",
+        hero_title: "发现美好品牌，创造温暖生活",
+        hero_subtitle: "分享每个品质品牌给生活带来的美好体验。发布您喜爱的品牌官网，赢取 Hahadog 骨头积分！",
         upload_fab: "分享美好品牌 ☕",
         upload_fab_login: "登录以分享 ☕",
         whiteboard_header: "品牌体验墙 - 发现美好",
         tab_latest: "最新推荐",
         tab_hottest: "热门品牌 (Top Dogs)",
         modal_login_title: "欢迎来到 Hahadog",
-        modal_login_desc: "选择登录方式以分享优质品牌体验并点赞",
+        modal_login_desc: "选择登录方式以分享优质品牌并点赞",
         wechat_login: "微信登录 (WeChat)",
         whatsapp_login: "WhatsApp 登录",
         mock_notice: "*(这是一个模拟登录，点击即可随机生成测试账号)*",
@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 5,
+            version: 7,
             users: {},
             currentUser: null,
             videos: [
@@ -104,7 +104,7 @@ class HahadogApp {
                     id: 'v1',
                     userId: 'mockUser1',
                     url: 'https://yearntour.net/',
-                    thumbnail: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://yearntour.net/wp-content/uploads/2025/11/1781929415978.jpeg',
                     title: '渴望旅游 Yearntour - 探索世界的无限奇妙，发现旅行给生活带来的广阔与美好体验',
                     platform: '境外旅游',
                     duration: 4.8,
@@ -113,14 +113,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'husky',
-                    logoText: 'YT',
-                    youtubeId: 'o3GYcZZsx2E'
+                    logoText: 'YT'
                 },
                 {
                     id: 'v2',
                     userId: 'mockUser2',
                     url: 'https://www.hbroaster.com/',
-                    thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://enhbroastercom.zb31.com/FileUpLoad/PictureInfosFile/638968941948439302_1.jpg',
                     title: '三豆客 HB Roaster - 用科技精细化控温烘焙每一颗豆，让满室的咖啡香气治愈平凡的一天',
                     platform: '智能烘焙',
                     duration: 5.2,
@@ -129,14 +128,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'shiba',
-                    logoText: 'HB',
-                    youtubeId: '_x-7z7rM7E8'
+                    logoText: 'HB'
                 },
                 {
                     id: 'v3',
                     userId: 'mockUser3',
                     url: 'https://www.wpmcoffee.com/zh',
-                    thumbnail: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://www.wpmcoffee.com/cdn/shop/files/PRIMUS_b7be2cb4-a5a4-4229-bb01-6494da1a04ff.webp?v=1776666315&width=1500',
                     title: '惠家 WPM - 匠心打造的半自动意式咖啡机与拉花神缸，让咖啡拉花成为温暖生活的艺术仪式',
                     platform: '精品设备',
                     duration: 6.1,
@@ -145,14 +143,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'corgi',
-                    logoText: 'W',
-                    youtubeId: '_vT9b9x082M'
+                    logoText: 'W'
                 },
                 {
                     id: 'v4',
                     userId: 'mockUser4',
                     url: 'https://www.gemilai.com.hk/',
-                    thumbnail: 'https://images.unsplash.com/photo-151097252790b-af4f42df8e48?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://www.gemilai.com.hk/img/ina_img.jpg',
                     title: '格米莱 Gemilai - 专业级家用与商用咖啡机，用晨间的第一杯浓郁Espresso为您注入满满幸福感',
                     platform: '意式器械',
                     duration: 3.9,
@@ -161,14 +158,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'golden',
-                    logoText: 'G',
-                    youtubeId: '2Ld4xGvT500'
+                    logoText: 'G'
                 },
                 {
                     id: 'v5',
                     userId: 'mockUser5',
                     url: 'https://mhw3bomber.com/zh',
-                    thumbnail: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://mhw3bomber.com/cdn/shop/files/1_1_d33da8bb-d35f-403f-ad60-f11798c22ad8.jpg?width=1200',
                     title: '轰炸机 MHW-3BOMBER - 潮酷前卫的咖啡器具与精品配件，让手冲咖啡成为表达生活态度的潮流体验',
                     platform: '潮流器具',
                     duration: 5.5,
@@ -177,14 +173,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'poodle',
-                    logoText: 'M',
-                    youtubeId: 'u5_6cWjT124'
+                    logoText: 'M'
                 },
                 {
                     id: 'v6',
                     userId: 'mockUser6',
                     url: 'https://www.timemore.cn/',
-                    thumbnail: 'https://images.unsplash.com/photo-1579888944880-d983411b8feb?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://www.timemore.cn/static/picture/%E7%99%BD%E8%89%B2%E5%A5%97%E8%A3%85.jpg',
                     title: '泰摩 TIMEMORE - 极简主义慢生活美学设计，用精准的智能秤和手冲壶带您回归自然的静谧',
                     platform: '美学器具',
                     duration: 4.5,
@@ -193,14 +188,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'bulldog',
-                    logoText: 'TM',
-                    youtubeId: 'c0Z18f_gW1M'
+                    logoText: 'TM'
                 },
                 {
                     id: 'v7',
                     userId: 'mockUser7',
                     url: 'https://www.newideabest.com/about/',
-                    thumbnail: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://www.newideabest.com/wordpress/wp-content/uploads/2022/11/about_zy.jpg',
                     title: '新意念 New Idea - 环球甄选的品质绿咖啡生豆，通过精细化源头把控传递大自然最真实的产地芬芳',
                     platform: '精品生豆',
                     duration: 6.3,
@@ -209,14 +203,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'pug',
-                    logoText: 'NI',
-                    youtubeId: 'gR_nC7-71G8'
+                    logoText: 'NI'
                 },
                 {
                     id: 'v8',
                     userId: 'mockUser1',
                     url: 'https://www.lhcoffeetime.com/',
-                    thumbnail: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://www.lhcoffeetime.com/uploadfiles/60.247.152.80/webid475/banner/202506/683fefae14f44.jpg',
                     title: '联合咖啡 LH Coffee Time - 充满温馨与舒适感的咖啡空间，用香醇咖啡连接都市人群之间的欢笑与温情',
                     platform: '咖啡时间',
                     duration: 5.0,
@@ -225,14 +218,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'samoyed',
-                    logoText: 'LH',
-                    youtubeId: 'j3D_W18bL34'
+                    logoText: 'LH'
                 },
                 {
                     id: 'v9',
                     userId: 'mockUser2',
                     url: 'https://www.caye.com/about',
-                    thumbnail: 'https://images.unsplash.com/photo-1469957761103-5593646568db?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://www.caye.com/upload/images/bannerWork.jpg',
                     title: '凯依咖啡 Caye Coffee - 坐落于海岛的手工新鲜烘焙工坊，为您带来惬意悠闲的阳光度假式风味感受',
                     platform: '海岛烘焙',
                     duration: 4.2,
@@ -241,14 +233,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'beagle',
-                    logoText: 'C',
-                    youtubeId: 'm0182T_j21Y'
+                    logoText: 'C'
                 },
                 {
                     id: 'v10',
                     userId: 'mockUser3',
                     url: 'https://santino.com.sg/',
-                    thumbnail: 'https://images.unsplash.com/photo-1550252112-9c3f4a3399f3?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://santino.com.sg/cdn/shop/files/This_machine_isn_t_for_everyone._It_s_for_people_who_refuse_to_compromise_on_their_coffee_experience._3.png?v=1782890194',
                     title: '圣蒂诺咖啡 Santino - 新加坡半个世纪沉淀的本土烘焙，为东南亚餐饮行业带来最地道浓郁的传统滋味',
                     platform: '经典烘焙',
                     duration: 5.8,
@@ -257,14 +248,13 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'dachshund',
-                    logoText: 'S',
-                    youtubeId: 'x1T27c_892k'
+                    logoText: 'S'
                 },
                 {
                     id: 'v11',
                     userId: 'mockUser4',
                     url: 'https://ecogreenpac.com/',
-                    thumbnail: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://ecogreenpac.com/cdn/shop/files/eco_bg_91a16d2b-55d8-46c4-8fb0-e878d0cd7246_1920x1080.jpg?v=1761821109',
                     title: 'Eco Green Pac - 绿色可降解的环保咖啡包装，用科技与可持续包装设计守护我们的蓝色地球',
                     platform: '环保包装',
                     duration: 3.5,
@@ -273,8 +263,7 @@ class HahadogApp {
                     likedBy: [],
                     favBy: [],
                     breed: 'collie',
-                    logoText: 'EG',
-                    youtubeId: 'z49J0-fW910'
+                    logoText: 'EG'
                 }
             ]
         };
@@ -291,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 5) {
+            if (!parsedDB.version || parsedDB.version < 7) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -454,7 +443,7 @@ class HahadogApp {
             name = `${country} ${phone.substring(0, 3)}****`;
         } else if (type === 'email') {
             const email = document.getElementById('login-email-input').value;
-            name = email.split('@')[0];
+name = email.split('@')[0];
         }
         this.performMockLogin(name, type.toUpperCase());
     }
@@ -510,8 +499,7 @@ class HahadogApp {
                 favBy: [],
                 breed: randomBreed,
                 logoText: logoLetters,
-                thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
-                youtubeId: 'z49J0-fW910' // Default fallback demo video
+                thumbnail: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80'
             };
 
             this.db.videos.unshift(newVideo);
@@ -539,18 +527,12 @@ class HahadogApp {
             const isLiked = this.currentUser && video.likedBy.includes(this.currentUser.id);
             const isFav = this.currentUser && video.favBy.includes(this.currentUser.id);
 
-            let mediaContent = '';
-            if (video.youtubeId) {
-                mediaContent = `
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/${video.youtubeId}?autoplay=0&mute=1" allowfullscreen></iframe>
-                </div>`;
-            } else {
-                mediaContent = `
+            const mediaContent = `
+            <a href="${video.url}" target="_blank" class="brand-image-link cursor-${video.breed || 'corgi'}">
                 <div class="video-thumbnail">
-                    <img src="${video.thumbnail}" alt="Thumbnail">
-                </div>`;
-            }
+                    <img src="${video.thumbnail}" alt="Thumbnail" referrerpolicy="no-referrer">
+                </div>
+            </a>`;
 
             card.innerHTML = `
                 <div style="position: relative;">
