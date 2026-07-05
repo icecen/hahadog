@@ -96,7 +96,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 11,
+            version: 12,
             users: {},
             currentUser: null,
             videos: [
@@ -151,7 +151,7 @@ class HahadogApp {
                     url: 'https://www.gemilai.com.hk/',
                     thumbnail: 'https://www.gemilai.com.hk/img/ina_img.jpg',
                     title: '格米莱 Gemilai - 专业级家用与商用咖啡机，用晨间的第一杯浓郁Espresso为您注入满满幸福感',
-                    platform: '意式器械',
+                    platform: '半自动精品咖啡设备',
                     duration: 3.9,
                     likes: 420,
                     favs: 180,
@@ -210,15 +210,15 @@ class HahadogApp {
                     userId: 'mockUser1',
                     url: 'https://www.lhcoffeetime.com/',
                     thumbnail: 'https://www.lhcoffeetime.com/uploadfiles/60.247.152.80/webid475/banner/202506/683fefae14f44.jpg',
-                    title: '联合咖啡 LH Coffee Time - 充满温馨与舒适感的咖啡空间，用香醇咖啡连接都市人群之间的欢笑与温情',
-                    platform: '咖啡时间',
+                    title: '领航智造 iPilot，一家专注于智能商用饮料机与全自动咖啡设备的高新技术企业。',
+                    platform: '咖啡设备',
                     duration: 5.0,
                     likes: 198,
                     favs: 76,
                     likedBy: [],
                     favBy: [],
                     breed: 'samoyed',
-                    logoText: 'LH'
+                    logoText: 'iP'
                 },
                 {
                     id: 'v9',
@@ -280,7 +280,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 11) {
+            if (!parsedDB.version || parsedDB.version < 12) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -684,6 +684,9 @@ name = email.split('@')[0];
         }
         if (lower.includes('caye') || lower.includes('咖爷')) {
             return "咖爷科技 (Caye Technology) 致力于用科技创造更美好的咖啡时光，专注咖啡机核心技术的底层创新，研发出了极具竞争力的专业级咖啡机设备。采购建议：如需了解其最新的咖啡黑科技及商业合作，欢迎直接点击其官方网站访问！🐕 汪！";
+        }
+        if (lower.includes('ipilot') || lower.includes('领航智造')) {
+            return "领航智造 (iPilot) 是一家专注于智能商用饮料机与全自动咖啡设备的高新技术企业。采购建议：如需大批量部署智能商用自动售货设备或办公室全自动咖啡机，可直接点击其官方网站了解详情！🐕 汪！";
         }
         
         if (lower.includes('选购') || lower.includes('采购') || lower.includes('买什么') || lower.includes('推荐') || lower.includes('怎么挑')) {
