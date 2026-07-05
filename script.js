@@ -4,80 +4,80 @@ const translations = {
     zh: {
         login_btn: "登录 / Login",
         logout_btn: "退出",
-        hero_title: "分享快乐，传递乐观情绪",
-        hero_subtitle: "专为新加坡的外籍人士打造的华文脱口秀交流空间。发布好笑的视频，赢取 Hahadog 积分！",
-        upload_fab: "分享幽默视频 📺",
-        upload_fab_login: "登录以分享 📺",
-        whiteboard_header: "公开白板 - 最新幽默",
-        tab_latest: "最新",
-        tab_hottest: "最热 (Top Dogs)",
+        hero_title: "发现美好品牌，创造温暖生活",
+        hero_subtitle: "分享每个品质品牌给生活带来的美好体验。发布您喜爱的品牌官网，赢取 Hahadog 骨头积分！",
+        upload_fab: "分享美好品牌 ☕",
+        upload_fab_login: "登录以分享 ☕",
+        whiteboard_header: "品牌体验墙 - 发现美好",
+        tab_latest: "最新推荐",
+        tab_hottest: "热门品牌 (Top Dogs)",
         modal_login_title: "欢迎来到 Hahadog",
-        modal_login_desc: "选择登录方式以分享视频和点赞",
+        modal_login_desc: "选择登录方式以分享优质品牌并点赞",
         wechat_login: "微信登录 (WeChat)",
         whatsapp_login: "WhatsApp 登录",
         mock_notice: "*(这是一个模拟登录，点击即可随机生成测试账号)*",
-        upload_modal_title: "分享脱口秀视频",
-        upload_modal_desc: "支持 视频号、YouTube、小红书、TikTok。算法会自动检测，超过7分钟将被自动删除！",
-        url_label: "视频链接 (URL)",
-        title_label: "标题/描述 (一句话概括笑点)",
-        duration_label: "*(模拟算法)* 视频时长 (分钟)",
-        duration_desc: "系统算法验证：大于7分钟将被删除。",
-        submit_btn: "算法检测并发布",
-        status_verifying: "正在由算法验证视频...",
-        status_error: "❌ 验证失败：视频超过7分钟，算法已将其自动删除！请分享更简短的幽默。",
-        status_success: "✅ 发布成功！感谢你传递乐观情绪！"
+        upload_modal_title: "分享美好品牌网站",
+        upload_modal_desc: "输入您推荐的品牌官网和体验介绍。系统会自动检测信息，如果推荐权重分数大于7分将引发审核保护！",
+        url_label: "品牌官网链接 (URL)",
+        title_label: "品牌理念/特色 (介绍它如何让生活更美好)",
+        duration_label: "*(模拟检测)* 推荐体验等级 (1-10)",
+        duration_desc: "系统检测限制：推荐权重评分大于7分将无法通过验证。",
+        submit_btn: "检测并发布",
+        status_verifying: "系统正在对品牌官网信息进行安全与合规检测...",
+        status_error: "❌ 检测未通过：推荐权重分数大于7分，触动防刷保护！请推荐更符合真实体验的品牌。",
+        status_success: "✅ 发布成功！感谢您分享美好品牌体验！"
     },
     en: {
         login_btn: "Login",
         logout_btn: "Logout",
-        hero_title: "Share Happiness, Spread Optimism",
-        hero_subtitle: "A Chinese stand-up comedy sharing space built for foreigners in Singapore. Post funny videos and earn Hahadog points!",
-        upload_fab: "Share Funny Video 📺",
-        upload_fab_login: "Login to Share 📺",
-        whiteboard_header: "Public Whiteboard - Latest Humor",
-        tab_latest: "Latest",
+        hero_title: "Discover Great Brands, Enhance Life",
+        hero_subtitle: "Share the beautiful experiences that premium brands bring to daily life. Post your favorite brand websites and earn Hahadog points!",
+        upload_fab: "Share Great Brand ☕",
+        upload_fab_login: "Login to Share ☕",
+        whiteboard_header: "Brand Experience Wall - Find Beauty",
+        tab_latest: "Latest Brands",
         tab_hottest: "Hottest (Top Dogs)",
         modal_login_title: "Welcome to Hahadog",
-        modal_login_desc: "Choose a login method to share and like videos",
+        modal_login_desc: "Choose a login method to share and like premium brands",
         wechat_login: "Login with WeChat",
         whatsapp_login: "Login with WhatsApp",
         mock_notice: "*(This is a mock login, click to generate a random test account)*",
-        upload_modal_title: "Share Stand-up Video",
-        upload_modal_desc: "Supports WeChat Video, YouTube, RED, TikTok. The algorithm will auto-detect, videos over 7 mins will be deleted!",
-        url_label: "Video Link (URL)",
-        title_label: "Title/Description (One sentence punchline)",
-        duration_label: "*(Mock Algorithm)* Video Duration (mins)",
-        duration_desc: "System validation: videos > 7 mins will be deleted.",
-        submit_btn: "Auto-Detect & Publish",
-        status_verifying: "Algorithm is verifying the video...",
-        status_error: "❌ Validation failed: Video > 7 mins, algorithm deleted it automatically! Please share shorter humor.",
-        status_success: "✅ Successfully published! Thanks for spreading optimism!"
+        upload_modal_title: "Share Premium Brand",
+        upload_modal_desc: "Enter the brand link and experience highlight. The system will auto-detect, if the score is greater than 7, it will be flagged for review!",
+        url_label: "Brand Website Link (URL)",
+        title_label: "Brand Concept/Highlight (How it makes life better)",
+        duration_label: "*(Mock System)* Experience Score (1-10)",
+        duration_desc: "System limit: scores > 7 will be blocked for safety.",
+        submit_btn: "Verify & Publish",
+        status_verifying: "System is verifying brand website integrity...",
+        status_error: "❌ Validation failed: Score > 7, security protection triggered! Please share realistic brand experiences.",
+        status_success: "✅ Successfully published! Thank you for sharing brand happiness!"
     },
     es: {
         login_btn: "Iniciar sesión",
         logout_btn: "Cerrar sesión",
-        hero_title: "Comparte Felicidad, Difunde Optimismo",
-        hero_subtitle: "Un espacio de comedia en vivo en chino creado para extranjeros en Singapur. ¡Publica videos divertidos y gana puntos Hahadog!",
-        upload_fab: "Compartir Video Divertido 📺",
-        upload_fab_login: "Iniciar sesión para compartir 📺",
-        whiteboard_header: "Pizarra Pública - Último Humor",
+        hero_title: "Descubre Buenas Marcas, Mejora la Vida",
+        hero_subtitle: "Comparte las hermosas experiencias que las marcas premium traen a la vida diaria. ¡Publica tus marcas favoritas y gana puntos Hahadog!",
+        upload_fab: "Compartir Marca ☕",
+        upload_fab_login: "Iniciar sesión para compartir ☕",
+        whiteboard_header: "Muro de Experiencias - Encuentra la Belleza",
         tab_latest: "Más recientes",
         tab_hottest: "Más populares (Top Dogs)",
         modal_login_title: "Bienvenido a Hahadog",
-        modal_login_desc: "Elige un método para compartir y dar me gusta",
+        modal_login_desc: "Elige un método para compartir y dar me gusta a marcas premium",
         wechat_login: "Iniciar sesión con WeChat",
         whatsapp_login: "Iniciar sesión con WhatsApp",
         mock_notice: "*(Inicio de sesión simulado, haz clic para generar cuenta de prueba)*",
-        upload_modal_title: "Compartir Video de Comedia",
-        upload_modal_desc: "Soporta WeChat Video, YouTube, RED, TikTok. El algoritmo detectará automáticamente, ¡videos de > 7 min serán eliminados!",
-        url_label: "Enlace del Video (URL)",
-        title_label: "Título/Descripción (El remate en una oración)",
-        duration_label: "*(Algoritmo Simulado)* Duración (min)",
-        duration_desc: "Validación del sistema: videos > 7 min serán eliminados.",
+        upload_modal_title: "Compartir Marca Premium",
+        upload_modal_desc: "Ingrese el enlace y la descripción. El sistema detectará automáticamente, ¡puntajes > 7 serán bloqueados!",
+        url_label: "Enlace del Sitio Web (URL)",
+        title_label: "Concepto/Destacar (Cómo hace la vida mejor)",
+        duration_label: "*(Simulado)* Puntaje de Experiencia (1-10)",
+        duration_desc: "Límite del sistema: puntajes > 7 serán bloqueados por seguridad.",
         submit_btn: "Detectar y Publicar",
-        status_verifying: "El algoritmo está verificando el video...",
-        status_error: "❌ Error: Video > 7 min, ¡el algoritmo lo eliminó automáticamente! Por favor comparte humor más corto.",
-        status_success: "✅ ¡Publicado con éxito! ¡Gracias por difundir optimismo!"
+        status_verifying: "El sistema está verificando la integridad del sitio web...",
+        status_error: "❌ Error: ¡Puntaje > 7, protección de seguridad activada! Comparta experiencias realistas.",
+        status_success: "✅ ¡Publicado con éxito! ¡Gracias por compartir felicidad de marca!"
     }
 };
 
@@ -95,109 +95,183 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 3,
+            version: 4,
             users: {},
             currentUser: null,
             videos: [
                 {
                     id: 'v1',
                     userId: 'mockUser1',
-                    url: 'https://www.youtube.com/watch?v=o3GYcZZsx2E',
-                    thumbnail: 'https://img.youtube.com/vi/o3GYcZZsx2E/hqdefault.jpg',
-                    title: '呼兰脱口秀：北上广的打工日常',
-                    platform: 'YouTube',
-                    duration: 5.2,
+                    url: 'https://yearntour.net/',
+                    thumbnail: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80',
+                    title: '渴望旅游 Yearntour - 探索世界的无限奇妙，发现旅行给生活带来的广阔与美好体验',
+                    platform: '境外旅游',
+                    duration: 4.8,
                     likes: 128,
                     favs: 45,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'husky',
+                    logoText: 'YT'
                 },
                 {
                     id: 'v2',
                     userId: 'mockUser2',
-                    url: 'https://www.youtube.com/watch?v=-832gJBu2ac',
-                    thumbnail: 'https://img.youtube.com/vi/-832gJBu2ac/hqdefault.jpg',
-                    title: '徐志胜脱口秀：关于容貌焦虑',
-                    platform: 'YouTube',
-                    duration: 6.8,
+                    url: 'https://www.hbroaster.com/',
+                    thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                    title: '三豆客 HB Roaster - 用科技精细化控温烘焙每一颗豆，让满室的咖啡香气治愈平凡的一天',
+                    platform: '智能烘焙',
+                    duration: 5.2,
                     likes: 85,
                     favs: 20,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'shiba',
+                    logoText: 'HB'
                 },
                 {
                     id: 'v3',
                     userId: 'mockUser3',
-                    url: 'https://www.youtube.com/watch?v=a78vlBPy5A8',
-                    thumbnail: 'https://img.youtube.com/vi/a78vlBPy5A8/hqdefault.jpg',
-                    title: '何广智脱口秀：租房那些事儿',
-                    platform: 'YouTube',
-                    duration: 4.2,
+                    url: 'https://www.wpmcoffee.com/zh',
+                    thumbnail: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80',
+                    title: '惠家 WPM - 匠心打造的半自动意式咖啡机与拉花神缸，让咖啡拉花成为温暖生活的艺术仪式',
+                    platform: '精品设备',
+                    duration: 6.1,
                     likes: 310,
                     favs: 150,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'corgi',
+                    logoText: 'W'
                 },
                 {
                     id: 'v4',
                     userId: 'mockUser4',
-                    url: 'https://www.youtube.com/watch?v=kYxbgZEh4YI',
-                    thumbnail: 'https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?auto=format&fit=crop&w=600&q=80',
-                    title: '艾杰西(白人小哥)脱口秀：美式幽默碰上中国大妈',
-                    platform: 'YouTube',
-                    duration: 5.5,
+                    url: 'https://www.gemilai.com.hk/',
+                    thumbnail: 'https://images.unsplash.com/photo-151097252790b-af4f42df8e48?auto=format&fit=crop&w=600&q=80',
+                    title: '格米莱 Gemilai - 专业级家用与商用咖啡机，用晨间的第一杯浓郁Espresso为您注入满满幸福感',
+                    platform: '意式器械',
+                    duration: 3.9,
                     likes: 420,
                     favs: 180,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'golden',
+                    logoText: 'G'
                 },
                 {
                     id: 'v5',
                     userId: 'mockUser5',
-                    url: 'https://www.tiktok.com/@standup/video/1234567',
-                    thumbnail: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=600&q=80',
-                    title: '玛丽亚(黑人女孩)脱口秀：在广州被叫“靓女”',
-                    platform: 'TikTok',
-                    duration: 3.2,
+                    url: 'https://mhw3bomber.com/zh',
+                    thumbnail: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80',
+                    title: '轰炸机 MHW-3BOMBER - 潮酷前卫的咖啡器具与精品配件，让手冲咖啡成为表达生活态度的潮流体验',
+                    platform: '潮流器具',
+                    duration: 5.5,
                     likes: 890,
                     favs: 340,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'poodle',
+                    logoText: 'M'
                 },
                 {
                     id: 'v6',
                     userId: 'mockUser6',
-                    url: 'https://www.xiaohongshu.com/explore/123',
-                    thumbnail: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
-                    title: '星悦(白人女孩)脱口秀：中文八级听不懂东北话',
-                    platform: '小红书',
-                    duration: 4.1,
+                    url: 'https://www.timemore.cn/',
+                    thumbnail: 'https://images.unsplash.com/photo-1579888944880-d983411b8feb?auto=format&fit=crop&w=600&q=80',
+                    title: '泰摩 TIMEMORE - 极简主义慢生活美学设计，用精准的智能秤和手冲壶带您回归自然的静谧',
+                    platform: '美学器具',
+                    duration: 4.5,
                     likes: 560,
                     favs: 210,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'bulldog',
+                    logoText: 'TM'
                 },
                 {
                     id: 'v7',
                     userId: 'mockUser7',
-                    url: 'https://channels.weixin.qq.com/video/456',
-                    thumbnail: 'https://images.unsplash.com/photo-1506803682981-6e718a9dd3ee?auto=format&fit=crop&w=600&q=80',
-                    title: '伊布(黑人小哥)脱口秀：当老外学会了菜市场砍价',
-                    platform: '视频号',
-                    duration: 6.0,
+                    url: 'https://www.newideabest.com/about/',
+                    thumbnail: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=600&q=80',
+                    title: '新意念 New Idea - 环球甄选的品质绿咖啡生豆，通过精细化源头把控传递大自然最真实的产地芬芳',
+                    platform: '精品生豆',
+                    duration: 6.3,
                     likes: 720,
                     favs: 290,
                     likedBy: [],
-                    favBy: []
+                    favBy: [],
+                    breed: 'pug',
+                    logoText: 'NI'
+                },
+                {
+                    id: 'v8',
+                    userId: 'mockUser1',
+                    url: 'https://www.lhcoffeetime.com/',
+                    thumbnail: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80',
+                    title: '联合咖啡 LH Coffee Time - 充满温馨与舒适感的咖啡空间，用香醇咖啡连接都市人群之间的欢笑与温情',
+                    platform: '咖啡时间',
+                    duration: 5.0,
+                    likes: 198,
+                    favs: 76,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'samoyed',
+                    logoText: 'LH'
+                },
+                {
+                    id: 'v9',
+                    userId: 'mockUser2',
+                    url: 'https://www.caye.com/about',
+                    thumbnail: 'https://images.unsplash.com/photo-1469957761103-5593646568db?auto=format&fit=crop&w=600&q=80',
+                    title: '凯依咖啡 Caye Coffee - 坐落于海岛的手工新鲜烘焙工坊，为您带来惬意悠闲的阳光度假式风味感受',
+                    platform: '海岛烘焙',
+                    duration: 4.2,
+                    likes: 110,
+                    favs: 38,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'beagle',
+                    logoText: 'C'
+                },
+                {
+                    id: 'v10',
+                    userId: 'mockUser3',
+                    url: 'https://santino.com.sg/',
+                    thumbnail: 'https://images.unsplash.com/photo-1550252112-9c3f4a3399f3?auto=format&fit=crop&w=600&q=80',
+                    title: '圣蒂诺咖啡 Santino - 新加坡半个世纪沉淀的本土烘焙，为东南亚餐饮行业带来最地道浓郁的传统滋味',
+                    platform: '经典烘焙',
+                    duration: 5.8,
+                    likes: 245,
+                    favs: 92,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'dachshund',
+                    logoText: 'S'
+                },
+                {
+                    id: 'v11',
+                    userId: 'mockUser4',
+                    url: 'https://ecogreenpac.com/',
+                    thumbnail: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80',
+                    title: 'Eco Green Pac - 绿色可降解的环保咖啡包装，用科技与可持续包装设计守护我们的蓝色地球',
+                    platform: '环保包装',
+                    duration: 3.5,
+                    likes: 167,
+                    favs: 58,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'collie',
+                    logoText: 'EG'
                 }
             ]
         };
 
         // Add some mock users
-        defaultDB.users['mockUser1'] = { id: 'mockUser1', name: 'User1', points: 128 + 45 * 2 };
-        defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 };
-        defaultDB.users['mockUser3'] = { id: 'mockUser3', name: 'User3', points: 310 + 150 * 2 };
-        defaultDB.users['mockUser4'] = { id: 'mockUser4', name: 'Jesse_A', points: 420 + 180 * 2 };
+        defaultDB.users['mockUser1'] = { id: 'mockUser1', name: 'User1', points: 128 + 45 * 2 + 198 + 76 * 2 };
+        defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 + 110 + 38 * 2 };
+        defaultDB.users['mockUser3'] = { id: 'mockUser3', name: 'User3', points: 310 + 150 * 2 + 245 + 92 * 2 };
+        defaultDB.users['mockUser4'] = { id: 'mockUser4', name: 'Jesse_A', points: 420 + 180 * 2 + 167 + 58 * 2 };
         defaultDB.users['mockUser5'] = { id: 'mockUser5', name: 'Maria_GZ', points: 890 + 340 * 2 };
         defaultDB.users['mockUser6'] = { id: 'mockUser6', name: 'Lila_Dongbei', points: 560 + 210 * 2 };
         defaultDB.users['mockUser7'] = { id: 'mockUser7', name: 'Ibu_Boss', points: 720 + 290 * 2 };
@@ -205,7 +279,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 3) {
+            if (!parsedDB.version || parsedDB.version < 4) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -367,13 +441,16 @@ class HahadogApp {
             }
 
             // Determine Platform
-            let platform = '其他';
-            if (url.includes('youtube.com') || url.includes('youtu.be')) platform = 'YouTube';
-            if (url.includes('tiktok.com')) platform = 'TikTok';
-            if (url.includes('xiaohongshu.com')) platform = '小红书';
-            if (url.includes('wechat') || url.includes('qq.com')) platform = '视频号';
+            let platform = '精品咖啡';
+            if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '境外旅游';
+            if (url.includes('roaster')) platform = '智能烘焙';
+            if (url.includes('green') || url.includes('pac') || url.includes('pack')) platform = '环保包装';
 
-            // Add video
+            // Add brand website
+            const breeds = ['corgi', 'shiba', 'husky', 'golden', 'poodle', 'bulldog', 'pug', 'samoyed', 'beagle', 'dachshund', 'collie'];
+            const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
+            const logoLetters = title.trim().substring(0, 2).toUpperCase();
+
             const newVideo = {
                 id: 'v_' + Date.now(),
                 userId: this.currentUser.id,
@@ -385,7 +462,9 @@ class HahadogApp {
                 favs: 0,
                 likedBy: [],
                 favBy: [],
-                thumbnail: 'https://images.unsplash.com/photo-1527228117154-e910f540f588?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' // Random mic pic
+                breed: randomBreed,
+                logoText: logoLetters,
+                thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80' // Fresh coffee beans photo
             };
 
             this.db.videos.unshift(newVideo);
@@ -416,6 +495,7 @@ class HahadogApp {
             const isFav = this.currentUser && video.favBy.includes(this.currentUser.id);
 
             let mediaContent = '';
+            // If it's a legacy youtube video, render it. Otherwise, render the custom brand showcase link wrapper
             if (video.url && (video.url.includes('youtube.com') || video.url.includes('youtu.be'))) {
                 let yId = '';
                 if (video.url.includes('youtu.be/')) {
@@ -433,13 +513,13 @@ class HahadogApp {
             }
 
             if (!mediaContent) {
-                // Fallback to original thumbnail approach, but make it clickable
+                const badgeLabel = this.currentLang === 'zh' ? '体验' : (this.currentLang === 'es' ? 'Exp' : 'Score');
                 mediaContent = `
-                <a href="${video.url}" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <a href="${video.url}" target="_blank" class="brand-link-wrapper cursor-${video.breed || 'corgi'}">
                     <div class="video-thumbnail">
-                        <img src="${video.thumbnail}" alt="Thumbnail">
-                        <div class="play-icon">▶</div>
-                        <div class="duration-badge">${video.duration} min</div>
+                        <div class="brand-logo-badge">${video.logoText || '🐾'}</div>
+                        <img src="${video.thumbnail}" alt="${video.title}">
+                        <div class="duration-badge">${badgeLabel}: ${video.duration}★</div>
                     </div>
                 </a>`;
             }
