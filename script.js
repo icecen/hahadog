@@ -9,8 +9,6 @@ const translations = {
         upload_fab: "分享美好品牌 ☕",
         upload_fab_login: "COFFEE AI",
         whiteboard_header: "品牌体验墙 - 发现美好",
-        tab_latest: "最新推荐",
-        tab_hottest: "热门品牌 (Top Dogs)",
         modal_login_title: "欢迎来到 Hahadog",
         modal_login_desc: "选择登录方式以分享优质品牌并点赞",
         wechat_login: "微信登录 (WeChat)",
@@ -35,8 +33,6 @@ const translations = {
         upload_fab: "Share Great Brand ☕",
         upload_fab_login: "COFFEE AI",
         whiteboard_header: "Brand Experience Wall - Find Beauty",
-        tab_latest: "Latest Brands",
-        tab_hottest: "Hottest (Top Dogs)",
         modal_login_title: "Welcome to Hahadog",
         modal_login_desc: "Choose a login method to share and like premium brands",
         wechat_login: "Login with WeChat",
@@ -61,8 +57,6 @@ const translations = {
         upload_fab: "Compartir Marca ☕",
         upload_fab_login: "COFFEE AI",
         whiteboard_header: "Muro de Experiencias - Encuentra la Belleza",
-        tab_latest: "Más recientes",
-        tab_hottest: "Más populares (Top Dogs)",
         modal_login_title: "Bienvenido a Hahadog",
         modal_login_desc: "Elige un método para compartir y dar me gusta a marcas premium",
         wechat_login: "Iniciar sesión con WeChat",
@@ -96,7 +90,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 14,
+            version: 15,
             users: {},
             currentUser: null,
             videos: [
@@ -264,13 +258,28 @@ class HahadogApp {
                     favBy: [],
                     breed: 'collie',
                     logoText: 'EG'
+                },
+                {
+                    id: 'v12',
+                    userId: 'mockUser2',
+                    url: 'https://huggscoffee.com/',
+                    thumbnail: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                    title: 'Huggs Coffee - 融合西方精品咖啡与新加坡传统 Kopi，为都市人群提供温暖的“第三空间”经典体验',
+                    platform: '精品与传统咖啡',
+                    duration: 5.5,
+                    likes: 156,
+                    favs: 64,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'golden',
+                    logoText: 'HG'
                 }
             ]
         };
 
         // Add some mock users
         defaultDB.users['mockUser1'] = { id: 'mockUser1', name: 'User1', points: 128 + 45 * 2 + 198 + 76 * 2 };
-        defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 + 110 + 38 * 2 };
+        defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 + 110 + 38 * 2 + 156 + 64 * 2 };
         defaultDB.users['mockUser3'] = { id: 'mockUser3', name: 'User3', points: 310 + 150 * 2 + 245 + 92 * 2 };
         defaultDB.users['mockUser4'] = { id: 'mockUser4', name: 'Jesse_A', points: 420 + 180 * 2 + 167 + 58 * 2 };
         defaultDB.users['mockUser5'] = { id: 'mockUser5', name: 'Maria_GZ', points: 890 + 340 * 2 };
@@ -280,7 +289,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 14) {
+            if (!parsedDB.version || parsedDB.version < 15) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -678,6 +687,9 @@ name = email.split('@')[0];
         }
         if (lower.includes('santino') || lower.includes('圣蒂诺')) {
             return "新加坡圣蒂诺咖啡 (Santino Coffee) 是新加坡及东南亚地区拥有半个世纪底蕴的传统与精品咖啡烘焙商，供应南洋传统咖啡豆（Kopi）、商业意式豆与精品单品豆。采购建议：在新加坡或东南亚开餐饮店，圣蒂诺可提供一站式商业定制烘焙豆及传统咖啡冲煮培训！🐕 汪！";
+        }
+        if (lower.includes('huggs') || lower.includes('哈格斯')) {
+            return "Huggs Coffee 是新加坡本土著名的咖啡连锁品牌，创立于2008年。它以“East Meets West”融合体验为特色，既提供西方精品的 Espresso、拿铁，也售卖最地道的新加坡传统 Kopi、Teh 与小吃。体验建议：如果您想在新加坡体验融汇东西方风味的咖啡文化，或者寻找一个温馨的“第三空间”办公小憩，Huggs 绝对是极佳的选择！🐕 汪！";
         }
         if (lower.includes('包装') || lower.includes('ecogreenpac') || lower.includes('eco green')) {
             return "Eco Green Pac 提供绿色环保、可降解的咖啡包装袋，包装定制防潮阻氧。采购建议：精品咖啡烘焙商采购包装袋推荐选配单向排气阀以保证新鲜度，起订量低且支持海外环保标准认证。🐕 汪！";
