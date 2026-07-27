@@ -90,7 +90,7 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 15,
+            version: 16,
             users: {},
             currentUser: null,
             videos: [
@@ -273,13 +273,43 @@ class HahadogApp {
                     favBy: [],
                     breed: 'golden',
                     logoText: 'HG'
+                },
+                {
+                    id: 'v13',
+                    userId: 'mockUser1',
+                    url: 'https://sousikgrinder.com/en',
+                    thumbnail: 'https://images.unsplash.com/photo-1508253578933-20b529302151?auto=format&fit=crop&w=600&q=80',
+                    title: 'Sou Sik 手色 - 极致机械咖啡器具与专业手摇磨豆机，致力于追求纯粹手感与精密研磨技术',
+                    platform: '机械研磨与咖啡器具',
+                    duration: 4.9,
+                    likes: 142,
+                    favs: 53,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'husky',
+                    logoText: 'SS'
+                },
+                {
+                    id: 'v14',
+                    userId: 'mockUser2',
+                    url: 'https://lebrewtech.com/',
+                    thumbnail: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=600&q=80',
+                    title: 'LeBrew 乐步 - 咖啡浓度仪等专业分析仪器与高精度磨豆机刀盘，科学助力每一杯咖啡的精准萃取',
+                    platform: '分析仪器与精密刀盘',
+                    duration: 5.1,
+                    likes: 185,
+                    favs: 72,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'corgi',
+                    logoText: 'LB'
                 }
             ]
         };
 
         // Add some mock users
-        defaultDB.users['mockUser1'] = { id: 'mockUser1', name: 'User1', points: 128 + 45 * 2 + 198 + 76 * 2 };
-        defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 + 110 + 38 * 2 + 156 + 64 * 2 };
+        defaultDB.users['mockUser1'] = { id: 'mockUser1', name: 'User1', points: 128 + 45 * 2 + 198 + 76 * 2 + 142 + 53 * 2 };
+        defaultDB.users['mockUser2'] = { id: 'mockUser2', name: 'User2', points: 85 + 20 * 2 + 110 + 38 * 2 + 156 + 64 * 2 + 185 + 72 * 2 };
         defaultDB.users['mockUser3'] = { id: 'mockUser3', name: 'User3', points: 310 + 150 * 2 + 245 + 92 * 2 };
         defaultDB.users['mockUser4'] = { id: 'mockUser4', name: 'Jesse_A', points: 420 + 180 * 2 + 167 + 58 * 2 };
         defaultDB.users['mockUser5'] = { id: 'mockUser5', name: 'Maria_GZ', points: 890 + 340 * 2 };
@@ -289,7 +319,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 15) {
+            if (!parsedDB.version || parsedDB.version < 16) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
@@ -492,6 +522,8 @@ name = email.split('@')[0];
             if (url.includes('tour') || url.includes('travel') || url.includes('yearn')) platform = '生活器皿';
             if (url.includes('roaster')) platform = '智能烘焙';
             if (url.includes('green') || url.includes('pac') || url.includes('pack')) platform = '环保包装';
+            if (url.includes('sousik')) platform = '机械研磨与咖啡器具';
+            if (url.includes('lebrew')) platform = '分析仪器与精密刀盘';
 
             const breeds = ['corgi', 'shiba', 'husky', 'golden', 'poodle', 'bulldog', 'pug', 'samoyed', 'beagle', 'dachshund', 'collie'];
             const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
@@ -698,7 +730,13 @@ name = email.split('@')[0];
             return "咖爷科技 (Caye Technology) 致力于用科技创造更美好的咖啡时光，专注咖啡机核心技术的底层创新，研发出了极具竞争力的专业级咖啡机设备。采购建议：如需了解其最新的咖啡黑科技及商业合作，欢迎直接点击其官方网站访问！🐕 汪！";
         }
         if (lower.includes('ipilot') || lower.includes('领航智造')) {
-            return "领航智造 (iPilot) 是一家专注于智能商用饮料机与全自动咖啡设备的高新技术企业。采购建议：如需大批量部署智能商用自动售货设备或办公室全自动咖啡机，可直接点击其官方网站了解详情！🐕 汪！";
+            return "领航智造 (iPilot) 专注于智能商用饮料机与全自动咖啡设备的高新技术企业。采购建议：如需大批量部署智能商用自动售货设备或办公室全自动咖啡机，可直接点击其官方网站了解详情！🐕 汪！";
+        }
+        if (lower.includes('sousik') || lower.includes('手色')) {
+            return "手色 (Sou Sik) 专注于机械咖啡器具与专业手摇研磨设备，设计独具机械美感与高质感手感，是手冲咖啡爱好者的极佳选择。采购建议：如需了解其特色研磨设备，欢迎直接点击其官方网站访问！🐕 汪！";
+        }
+        if (lower.includes('lebrew') || lower.includes('乐步')) {
+            return "乐步 (LeBrew) 专注于咖啡浓度仪等专业分析仪器与高精度磨豆机刀盘，致力于咖啡萃取与研磨技术的科学探索，用精密仪器让咖啡品质更稳定。采购建议：如需购买其高精度分析仪器或磨刀盘，可直接访问其官网！🐕 汪！";
         }
         
         if (lower.includes('选购') || lower.includes('采购') || lower.includes('买什么') || lower.includes('推荐') || lower.includes('怎么挑')) {
