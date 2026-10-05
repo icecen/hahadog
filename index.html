@@ -12,13 +12,21 @@
     <!-- Navigation -->
     <nav class="navbar glass-effect">
         <div class="logo">
-            <img src="logo.png" alt="Logo" class="logo-img">
+            <img src="logo_dark.png" alt="Hahadog Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-title">Hahadog</span>
+                <span class="brand-subtitle">咖啡品牌中心</span>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <a href="#video-grid" class="nav-item active">🐾 品牌体验墙</a>
+            <a href="javascript:void(0)" class="nav-item" onclick="app.chatBtn.click();">☕ AI 设备助手</a>
         </div>
         <div class="nav-actions">
             <select id="lang-switcher" class="lang-select">
-                <option value="zh">中文</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
+                <option value="zh">🌐 中文</option>
+                <option value="en">🌐 English</option>
+                <option value="es">🌐 Español</option>
             </select>
             <div id="user-info" class="user-info hidden">
                 <div class="points-badge">
@@ -28,7 +36,7 @@
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=guest" alt="User Avatar" id="user-avatar" class="avatar">
                 <button id="logout-btn" class="btn-secondary" data-i18n="logout_btn">退出</button>
             </div>
-            <button id="login-btn" class="btn-primary" data-i18n="login_btn">登录以分享 / Login to Share</button>
+            <button id="login-btn" class="btn-primary glow-btn" data-i18n="login_btn">登录以分享 / Login to Share</button>
         </div>
     </nav>
 
