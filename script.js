@@ -90,25 +90,10 @@ class HahadogApp {
 
     initDB() {
         const defaultDB = {
-            version: 16,
+            version: 17,
             users: {},
             currentUser: null,
             videos: [
-                {
-                    id: 'v1',
-                    userId: 'mockUser1',
-                    url: 'https://yearntour.net/',
-                    thumbnail: 'https://yearntour.net/wp-content/uploads/2025/11/1781929415978.jpeg',
-                    title: '艺途 Yearntour - 以艺术与工艺赋予美好体验，专注具有美感的饮品器皿',
-                    platform: '生活器皿',
-                    duration: 4.8,
-                    likes: 128,
-                    favs: 45,
-                    likedBy: [],
-                    favBy: [],
-                    breed: 'husky',
-                    logoText: 'YT'
-                },
                 {
                     id: 'v2',
                     userId: 'mockUser2',
@@ -123,6 +108,36 @@ class HahadogApp {
                     favBy: [],
                     breed: 'shiba',
                     logoText: 'HB'
+                },
+                {
+                    id: 'v7',
+                    userId: 'mockUser7',
+                    url: 'https://www.newideabest.com/about/',
+                    thumbnail: 'https://www.newideabest.com/wordpress/wp-content/uploads/2022/11/about_zy.jpg',
+                    title: '中益包装 New Idea - 专注于生产符合ESG（环境、社会和公司治理）的食品包装设备',
+                    platform: '包装设备',
+                    duration: 6.3,
+                    likes: 720,
+                    favs: 290,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'pug',
+                    logoText: 'ZY'
+                },
+                {
+                    id: 'v1',
+                    userId: 'mockUser1',
+                    url: 'https://yearntour.net/',
+                    thumbnail: 'https://yearntour.net/wp-content/uploads/2025/11/1781929415978.jpeg',
+                    title: '艺途 Yearntour - 以艺术与工艺赋予美好体验，专注具有美感的饮品器皿',
+                    platform: '生活器皿',
+                    duration: 4.8,
+                    likes: 128,
+                    favs: 45,
+                    likedBy: [],
+                    favBy: [],
+                    breed: 'husky',
+                    logoText: 'YT'
                 },
                 {
                     id: 'v3',
@@ -183,21 +198,6 @@ class HahadogApp {
                     favBy: [],
                     breed: 'bulldog',
                     logoText: 'TM'
-                },
-                {
-                    id: 'v7',
-                    userId: 'mockUser7',
-                    url: 'https://www.newideabest.com/about/',
-                    thumbnail: 'https://www.newideabest.com/wordpress/wp-content/uploads/2022/11/about_zy.jpg',
-                    title: '中益包装 New Idea - 专注于生产符合ESG（环境、社会和公司治理）的食品包装设备',
-                    platform: '包装设备',
-                    duration: 6.3,
-                    likes: 720,
-                    favs: 290,
-                    likedBy: [],
-                    favBy: [],
-                    breed: 'pug',
-                    logoText: 'ZY'
                 },
                 {
                     id: 'v8',
@@ -278,7 +278,7 @@ class HahadogApp {
                     id: 'v13',
                     userId: 'mockUser1',
                     url: 'https://sousikgrinder.com/en',
-                    thumbnail: 'https://images.unsplash.com/photo-1508253578933-20b529302151?auto=format&fit=crop&w=600&q=80',
+                    thumbnail: 'https://sousikgrinder.com/images/hero-banner-1.jpg',
                     title: 'Sou Sik 手色 - 极致机械咖啡器具与专业手摇磨豆机，致力于追求纯粹手感与精密研磨技术',
                     platform: '机械研磨与咖啡器具',
                     duration: 4.9,
@@ -319,7 +319,7 @@ class HahadogApp {
         const stored = localStorage.getItem('hahadog_db');
         if (stored) {
             let parsedDB = JSON.parse(stored);
-            if (!parsedDB.version || parsedDB.version < 16) {
+            if (!parsedDB.version || parsedDB.version < 17) {
                 this.saveDB(defaultDB);
                 return defaultDB;
             }
